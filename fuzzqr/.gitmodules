@@ -1,0 +1,9 @@
+[submodule "QRGen"]
+	path = extra/QRGen
+	url = https://github.com/h0nus/QRGen.git
+[submodule "greenpass-generator"]
+	path = extra/greenpass-generator
+	url = https://github.com/ps1dr3x/greenpass-generator/
+[submodule "qrcodejs"]
+	path = extra/qrcodejs
+	url = https://github.com/klonikar/qrcodejs

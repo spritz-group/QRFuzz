@@ -31,9 +31,11 @@ def main():
     if app_index is None or list_index is None: 
         exit(1)
     
-    f = open(lists[list_index])
+    app_fun = app_names[app_index]
+    
+    f = open(lists[list_index], encoding='utf-8')
 
-    for i, s in enumerate(open(f, encoding='utf-8').readlines()):
+    for i, s in enumerate(f.readlines()):
         qr_files.append(fuzz_type[list_index] + "-" + str(i))
         payloads.append(s)
         i += 1
@@ -41,25 +43,27 @@ def main():
     file = FileHandler()
 
     def genqr(text="test"):
+        print("> Text:", text)
         qrcode = pyqrcode.create(text, error=_qr_error)
         return tk.BitmapImage(data = qrcode.xbm(scale=_qr_scale))
 
-    def editpayload():
-        msg = get_cose(get_pass(payloads[file.iterator]))
-        msg = add_cose_key(msg, PRIVKEY)
-        msg = flynn(msg.encode(), HEADER)
-        msg = b45(msg)
-        msg = b"HC1:" + msg
-        print("RAW Certificate: ", msg)
-        print("-"*20)
-        return msg
+    # def editpayload():
+    #     msg = get_cose(get_pass(payloads[file.iterator]))
+    #     msg = add_cose_key(msg, PRIVKEY)
+    #     msg = flynn(msg.encode(), HEADER)
+    #     msg = b45(msg)
+    #     msg = b"HC1:" + msg
+    #     print("RAW Certificate: ", msg)
+    #     print("-"*20)
+    #     return msg
 
     def update():
         # ---------- main loop -----------
         if file.checker():
-            gp = editpayload()
+            gp = app_fun(payloads[file.iterator])
             img2 = genqr(gp)
-            panel.config(image=img2)
+
+            panel.config(image= img2)
             panel.image = img2 #IPER MEGA IMPORTANT
             file.next()
             window.after(update_time, update)
@@ -108,9 +112,9 @@ def cmd():
     sgroup.add_argument(
         "--app",
         "-a",
-        type=int,
+        type=str,
         help="Set app to use",
-        choices=app_name.values(),
+        choices=app_names.keys(),
     )
     opt = parser.parse_args()
     if len(sys.argv) == 1:

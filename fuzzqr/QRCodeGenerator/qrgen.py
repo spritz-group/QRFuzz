@@ -22,23 +22,35 @@ lists = [
 ]
 
 fuzz_type = {
-    0 : "SQL_Injections",
-    1 : "XSS",
-    2 : "Command_Injection",
-    3 : "Format_String",
-    4 : "XXE",
-    5 : "String_Fuzzing",
-    6 : "SSI_Injection",
-    7 : "LFI_Directory_Traversal",
-    8 : "Test", # for testing purpose
+    0 : "Test", # for testing purpose
+    1 : "SQL_Injections",
+    2 : "XSS",
+    3 : "Command_Injection",
+    4 : "Format_String",
+    5 : "XXE",
+    6 : "String_Fuzzing",
+    7 : "SSI_Injection",
+    8 : "LFI_Directory_Traversal",
 }
 
 # TODO: add enum of top apps from excel
 
 app_names = {
     # (string) : function_callback
+    # ----------- IT
     "wallapop" : qrbuilder.wallpop,
-    
+    "tiktok" : qrbuilder.tiktok,
+    "satispay" : qrbuilder.satispay,
+    "posteid" : qrbuilder.posteid,
+    "telegram" : qrbuilder.telegram,
+    "zoom" : qrbuilder.zoom,
+    "qrbarcodereader" : qrbuilder.qrbarcodereader,
+    "io" : qrbuilder.io,
+    "shein" : qrbuilder.shein,
+    # ----------- US
+    "instagram" : qrbuilder.instagram,
+    "snapchat" : qrbuilder.snapchat,
+    "paypal" : qrbuilder.paypal,
 }
 
 

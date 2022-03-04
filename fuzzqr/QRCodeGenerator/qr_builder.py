@@ -4,7 +4,7 @@ class qrbuilder:
     # IT APPS
     # ------------------------------------------------------------------------
     def wallpop(payload: str):
-        return "abc" + payload
+        return payload
 
     def posteid(payload: str):
         return "https://secureholder.mobile.poste.it/jod-secure-holder/qrcodeResolver/" + payload

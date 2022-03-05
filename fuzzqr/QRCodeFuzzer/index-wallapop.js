@@ -3,6 +3,9 @@ const assert = require("assert");
 
 var fuzzer = require('./fuzzer.js');
 
+let app = require('./inspectors/wallpop.js')
+let appIns = app.Inspector();
+
 const opts = {
   path: '/wd/hub',
   port: 4723,
@@ -10,7 +13,9 @@ const opts = {
     "platformName": "Android",
     "platformVersion" : "9.0",
     "deviceName": "TestDevice",
-   "appActivity": "ui.FirstActivity",
+    // "app": "verificac19.apk",
+    // "appPackage": "it.ministerodellasalute.verificaC19",
+    // "appActivity": "ui.FirstActivity",
     "automationName": "UiAutomator2",
     "noReset": "true"
   }
@@ -24,19 +29,9 @@ async function main () {
 
   
   // +---------------------------------------------------------+
-  // | TO EDIT 1: GO TO SCAN                                   |
+  // | GO TO SCAN                                              |
   // +---------------------------------------------------------+
-  // Click "Profile"
-  let btn_profile = await driver.findElement("id", "com.wallapop:id/profile");
-  await driver.elementClick(btn_profile.ELEMENT);
-  
-  // Click "Wallet"
-  let btn_wallet = await driver.findElement("id", "com.wallapop:id/wallet_amount");
-  await driver.elementClick(btn_wallet.ELEMENT);
-  
-  // Click "Scan"
-  let btn_receive_money = await driver.findElement("id", "com.wallapop:id/receiveMoneyButton");
-  await driver.elementClick(btn_receive_money.ELEMENT);
+  appIns.goToScan();
   // -----------------------------------------------------------
 
   let file = "start";
@@ -50,7 +45,7 @@ async function main () {
     // +---------------------------------------------------------+
     // | TO EDIT 2: RESULT VIEW                                  |
     // +---------------------------------------------------------+
-    let result_view = await driver.findElement("id", "com.wallapop:id/informativeView");
+    let result_view = appIns.getResultView();
     // -----------------------------------------------------------
 
     // Await for the script before taking a screenshot

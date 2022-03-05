@@ -1,10 +1,22 @@
 {
-  "name": "QRCodeFuzzer",
-  "version": "1.0.0",
-  "description": "### Requirements",
+  "name": "qr-code-fuzzer",
+  "version": "0.1.0",
+  "description": "QR code fuzzer to perform Android / iOS app testing with QR Codes",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "wallapop":"node ./index.js wallapop",
+    "tiktok":"node ./index.js tiktok",
+    "satispay":"node ./index.js satispay",
+    "posteid":"node ./index.js posteid",
+    "telegram":"node ./index.js telegram",
+    "zoom":"node ./index.js zoom",
+    "qrbarcodereader":"node ./index.js qrbarcodereader",
+    "io":"node ./index.js io",
+    "shein":"node ./index.js shein",
+    "instagram":"node ./index.js instagram",
+    "snapchat":"node ./index.js snapchat",
+    "paypal":"node ./index.js paypal"
   },
   "keywords": [],
   "author": "",

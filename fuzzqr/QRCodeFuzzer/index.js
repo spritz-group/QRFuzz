@@ -1,21 +1,25 @@
 const wdio = require("webdriverio");
 const assert = require("assert");
 var fuzzer = require('./fuzzer.js');
+var all_ins = require('./utils.js');
 
-let param = () => {
-  param = process.argv[2];
-  
+
+// TODO: not working yet
+let x = () => {
+  arg = process.argv[2];
+  console.log("checking...")
+  if(!(arg in all_ins)) {
+    console.log("[QRCodeFuzzer] Wrong parameter passed! Please pass the file name from ./inspectors folder.");
+    exit(1);
+  }
 };
 
-
-
-let app = require('./inspectors/' + param + ".js")
+let app = require('./inspectors/' + process.argv[2] + ".js")
 let appIns = new app.Inspector();
 
 const opts = {
   path: '/wd/hub',
   port: 4723,
-  // Capabilities: https://w3c.github.io/webdriver/#capabilities
   capabilities: {
     "platformName": "Android",
     "platformVersion" : "9.0",

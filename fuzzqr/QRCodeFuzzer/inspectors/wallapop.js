@@ -1,4 +1,3 @@
-
 class Inspector {
     app_name = "wallpop"
     app_package = "com.wallapop"

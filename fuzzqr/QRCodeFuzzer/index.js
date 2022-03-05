@@ -1,21 +1,28 @@
 const wdio = require("webdriverio");
 const assert = require("assert");
-
 var fuzzer = require('./fuzzer.js');
+
+let param = () => {
+  param = process.argv[2];
+  
+};
+
+
+
+let app = require('./inspectors/' + param + ".js")
+let appIns = new app.Inspector();
 
 const opts = {
   path: '/wd/hub',
   port: 4723,
+  // Capabilities: https://w3c.github.io/webdriver/#capabilities
   capabilities: {
     "platformName": "Android",
     "platformVersion" : "9.0",
-    // "platformVersion": "10.0",
-    // "platformVersion": "11.0",
-    // "platformVersion": "12.0",
     "deviceName": "TestDevice",
-    "app": "verificac19.apk",
-    "appPackage": "it.ministerodellasalute.verificaC19",
-   "appActivity": "ui.FirstActivity",
+    // "app": appIns.app_apk,
+    "appPackage": appIns.app_package,
+    "appActivity": appIns.app_package + appIns.app_activity,
     "automationName": "UiAutomator2",
     "noReset": "true"
   }
@@ -27,31 +34,36 @@ async function main () {
   // Wait before crashing if not finding an element
   await driver.setTimeout({ 'implicit': 10000 });
 
-  // Click "Scan QR" button
-  let qrbutton = await driver.findElement("id", "it.ministerodellasalute.verificaC19:id/qrButton");
-  await driver.elementClick(qrbutton.ELEMENT);
+  // +---------------------------------------------------------+
+  // | GO TO SCAN                                              |
+  // +---------------------------------------------------------+
+  await appIns.goToScan(driver);
+  // -----------------------------------------------------------
 
   let file = "start";
-
   var n = fuzzer.size();
+  
+  // Perform QR Checking
   for (i=0; i<n; ++i){
-
     file = fuzzer.readFile().file;
     console.log("> QR code under analysis: " + file);
 
-    // Wait result window 
-    let checkmark = await driver.findElement("id", "it.ministerodellasalute.verificaC19:id/checkmark");
+    // +---------------------------------------------------------+
+    // | RESULT VIEW                                             |
+    // +---------------------------------------------------------+
+    let result_view = await appIns.getResultView(driver);
+    // -----------------------------------------------------------
 
     // Await for the script before taking a screenshot
     await new Promise(r => setTimeout(r, 200));
-
-    if (checkmark && checkmark.error == "no such element" ) {
+  
+    if (result_view && result_view.error == "no such element" ) {
       console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile().file);
       fuzzer.log();
       // Update QR
       fuzzer.requestNewQR();
       continue;
-    } 
+    }
     
     // Take screenshot
     let image = await driver.takeScreenshot();
@@ -71,7 +83,6 @@ async function main () {
 
   await driver.deleteSession();
 }
-
 
 main();
 

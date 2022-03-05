@@ -1,0 +1,3 @@
+[submodule "extra/fuzzqr"]
+	path = extra/fuzzqr
+	url = https://github.com/maxelweb/fuzzqr

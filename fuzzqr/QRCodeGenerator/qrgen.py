@@ -18,6 +18,10 @@ lists = [
     "words/strfuzz.txt",
     "words/ssi.txt",
     "words/lfi.txt",
+    "words/json.txt",
+    "words/metachars.txt",
+    "naughty-strings.txt",
+    "special-chars.txt",
     "words/test.txt" # for testing purpose
 ]
 
@@ -31,6 +35,10 @@ fuzz_type = {
     6 : "String_Fuzzing",
     7 : "SSI_Injection",
     8 : "LFI_Directory_Traversal",
+    9 : "Metachars",
+    10: "Naughty_strings",
+    11: "Special_Chars",
+    12: "JSON"
 }
 
 # TODO: add enum of top apps from excel

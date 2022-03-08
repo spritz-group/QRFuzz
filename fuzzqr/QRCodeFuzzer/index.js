@@ -9,7 +9,7 @@ const opts = {
   port: 4723,
   capabilities: {
     "platformName": "Android",
-    "platformVersion" : "9.0",
+    // "platformVersion" : "9.0", // cross platform
     "deviceName": "TestDevice",
     // "app": appIns.app_apk, // not needed
     "appPackage": appIns.app_package,

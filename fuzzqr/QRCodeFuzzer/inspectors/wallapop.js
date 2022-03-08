@@ -21,7 +21,6 @@ class Inspector {
         return await driver.findElement("id", "com.wallapop:id/informativeView");
     }
 
-    
     async goBackToScan(driver) {}
 
 }

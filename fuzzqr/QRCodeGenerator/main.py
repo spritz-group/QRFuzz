@@ -28,19 +28,27 @@ def main():
     app_index = opt.app
     list_index = opt.list
 
-    if app_index is None or list_index is None: 
+    if app_index is None: 
         exit(1)
-    
     app_fun = app_names[app_index]
     
-    f = open(lists[list_index], encoding='utf-8')
+    print(app_index)
+    if list_index is not None:
+        dicts = [word_files[list_index]]
+        name = word_file_names[list_index]
+    else:
+        dicts = word_files
+        name = "all"
+    
+    for dd in dicts:
+        f = open(dd, encoding='utf-8')
 
-    for i, s in enumerate(f.readlines()):
-        qr_files.append(fuzz_type[list_index] + "-" + str(i))
-        payloads.append(s)
-        i += 1
+        for i, s in enumerate(f.readlines()):
+            qr_files.append(name + "-" + str(i))
+            payloads.append(s)
+            i += 1
 
-    file = FileHandler()
+        file = FileHandler()
 
     def genqr(text="test"):
         print("> Text:", text)
@@ -107,7 +115,7 @@ def cmd():
         "-l",
         type=int,
         help="Set wordlist to use",
-        choices=fuzz_type.keys(),
+        choices=[i[0] for i in fuzz_type],
     ) 
     sgroup.add_argument(
         "--app",

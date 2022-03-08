@@ -1,7 +1,7 @@
 class Inspector {
     app_name = "wallpop"
     app_package = "com.wallapop"
-    app_activity = ".activities.HomeActivity"
+    app_activity = "com.wallapop.activities.HomeActivity"
 
     async goToScan(driver) {
         // Click "Profile"
@@ -20,6 +20,9 @@ class Inspector {
     async getResultView(driver) {
         return await driver.findElement("id", "com.wallapop:id/informativeView");
     }
+
+    
+    async goBackToScan(driver) {}
 
 }
 

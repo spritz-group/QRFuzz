@@ -9,14 +9,14 @@ const opts = {
   port: 4723,
   capabilities: {
     "platformName": "Android",
-    // "platformVersion" : "9.0", // cross platform
     "deviceName": "TestDevice",
-    // "app": appIns.app_apk, // not needed
     "appPackage": appIns.app_package,
-    "appActivity": appIns.app_package + appIns.app_activity,
+    "appActivity": appIns.app_activity,
     "automationName": "UiAutomator2",
     "noReset": "true"
   }
+  // "app": appIns.app_apk, // not needed
+  // "platformVersion" : "9.0", // cross platform
 };
 
 async function main () {
@@ -70,6 +70,12 @@ async function main () {
 
     // Go back
     await driver.back();
+    
+    // +---------------------------------------------------------+
+    // | BACK TO SCAN (if needed)                                |
+    // +---------------------------------------------------------+
+    await appIns.goBackToScan(driver);
+    // -----------------------------------------------------------
   }
 
   await driver.deleteSession();

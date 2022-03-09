@@ -1,7 +1,7 @@
 class Inspector {
-    app_name = "wallpop"
-    app_package = "com.wallapop"
-    app_activity = "com.wallapop.activities.HomeActivity"
+    app_name = "wallpop";
+    app_package = "com.wallapop";
+    app_activity = "com.wallapop.activities.HomeActivity";
 
     async goToScan(driver) {
         // Click "Profile"
@@ -25,4 +25,4 @@ class Inspector {
 
 }
 
-exports.Inspector = Inspector
+exports.Inspector = Inspector;

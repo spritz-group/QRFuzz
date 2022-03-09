@@ -1,7 +1,7 @@
 class Inspector {
-    app_name = "tiktok"
-    app_package = "com.zhiliaoapp.musically"
-    app_activity = "com.ss.android.ugc.aweme.splash.SplashActivity"
+    app_name = "tiktok";
+    app_package = "com.zhiliaoapp.musically";
+    app_activity = "com.ss.android.ugc.aweme.splash.SplashActivity";
 
     async goToScan(driver) {
         // Click "Profile"
@@ -35,4 +35,4 @@ class Inspector {
     }
 }
 
-exports.Inspector = Inspector
+exports.Inspector = Inspector;

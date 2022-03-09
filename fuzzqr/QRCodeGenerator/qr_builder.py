@@ -39,7 +39,7 @@ class qrbuilder:
 
     def whatsapp(payload: str):
         # TODO: encode payload? reverse eng. needed here - F
-        return "1@Gr2AkYnVD/66I5SwG9BM08UWvrQA2oqU5GuUcdiIp3A+tGLqPgiXcf+Hj3e7/gYkU1k/56ITQ/QM8g==,AJbtsqCjV7tmEM5UqT8nHvUnFT3/UIJx/X0f2kULAlw=,SC1mgNihOMah3cPYBsYxVg=="
+        return payload
 
     def snapchat(payload: str):
         return payload # FIXME: proprietary QR code (?) - F

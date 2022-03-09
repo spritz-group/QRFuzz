@@ -33,6 +33,7 @@ app_names = {
     "shein" : qrbuilder.shein,
     # ----------- US
     "instagram" : qrbuilder.instagram,
+    "whatsapp" : qrbuilder.whatsapp,
     "snapchat" : qrbuilder.snapchat,
     "paypal" : qrbuilder.paypal,
 }

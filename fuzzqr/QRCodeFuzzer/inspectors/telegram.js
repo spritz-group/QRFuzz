@@ -1,7 +1,7 @@
 class Inspector {
-    app_name = "telegram"
-    app_package = "org.telegram.messenger"
-    app_activity = "org.telegram.ui.LaunchActivity"
+    app_name = "telegram";
+    app_package = "org.telegram.messenger";
+    app_activity = "org.telegram.ui.LaunchActivity";
 
     async goToScan(driver) {
         let menu = await driver.findElement("xpath", '//android.widget.ImageView[@content-desc="Open navigation menu"]');
@@ -28,4 +28,4 @@ class Inspector {
 
 }
 
-exports.Inspector = Inspector
+exports.Inspector = Inspector;

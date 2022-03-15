@@ -4,10 +4,11 @@
 
 from qrgen import *
 from passgen import *
+from PIL import ImageTk, Image
 
 import sys
 import argparse
-import pyqrcode
+import qrcode
 import tkinter as tk
 
 from file_handler import *
@@ -17,7 +18,6 @@ from file_handler import *
 _qr_error = 'L'
 _qr_scale = 7
 update_time = 500
-
 
 # --------------------- MAIN ---------------------
 def main():   
@@ -52,27 +52,46 @@ def main():
 
     def genqr(text="test"):
         print("> Text:", text)
-        qrcode = pyqrcode.create(text, error=_qr_error)
-        return tk.BitmapImage(data = qrcode.xbm(scale=_qr_scale))
+        qr = qrcode.QRCode(
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+        )
+        qr.add_data(text)
+        qr.make(fit=True)
 
-    # def editpayload():
-    #     msg = get_cose(get_pass(payloads[file.iterator]))
-    #     msg = add_cose_key(msg, PRIVKEY)
-    #     msg = flynn(msg.encode(), HEADER)
-    #     msg = b45(msg)
-    #     msg = b"HC1:" + msg
-    #     print("RAW Certificate: ", msg)
-    #     print("-"*20)
-    #     return msg
+        img = qr.make_image(fill_color="black", back_color="white")
+        return img
+
+        
+    # ----------- TK -----------
+    window = tk.Tk()
+    window.title("QR Code Visualizer")
+    window.geometry("800x800")
+    window.configure(background='white')
+
+    # ------ Canvas
+
+    global img 
+    img = genqr("test")
+
+    ph = ImageTk.PhotoImage(img)
+    label = tk.Label(window, image= ph)
+    # canvas.create_bitmap(100, 100, bitmap=img, anchor=tk.NW)
+
 
     def update():
         # ---------- main loop -----------
         if file.checker():
             gp = app_fun(payloads[file.iterator])
-            img2 = genqr(gp)
-
-            panel.config(image= img2)
-            panel.image = img2 #IPER MEGA IMPORTANT
+            img = genqr(gp)
+            
+            new_width = label.winfo_width()
+            new_height = label.winfo_height()
+            image = img.resize((new_width, new_height))
+            photo = ImageTk.PhotoImage(image)
+            label.config(image = photo)
+            label.image = photo 
+            # panel.config(image= img2)
+            # panel.image = img2 #IPER MEGA IMPORTANT
             file.next()
             window.after(update_time, update)
         else:
@@ -86,18 +105,19 @@ def main():
     def close():
         print("Done")
         window.destroy()
+    
+    def resize_image(e):
+        new_width = e.width
+        new_height = e.height
+        image = img.resize((new_width, new_height))
+        photo = ImageTk.PhotoImage(image)
+        label.config(image = photo)
+        label.image = photo #avoid garbage collection
         
 
-    # ----------- TK -----------
-    window = tk.Tk()
-    window.title("QR Code Visualizer")
-    window.geometry("800x800")
-    window.configure(background='white')
-
-    img = genqr("test")
-    panel = tk.Label(window, image = img)
-    panel.pack(side = "bottom", fill = "both", expand = "yes")
-
+    label.bind('<Configure>', resize_image)
+    label.pack(fill=tk.BOTH, expand = tk.YES)
+    # add some widgets to the canvas
     window.after(update_time, update)
     window.mainloop()
 

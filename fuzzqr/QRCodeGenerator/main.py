@@ -51,14 +51,19 @@ def main():
         file = FileHandler()
 
     def genqr(text="test"):
-        print("> Text:", text)
-        qr = qrcode.QRCode(
-            error_correction=qrcode.constants.ERROR_CORRECT_L,
-        )
-        qr.add_data(text)
-        qr.make(fit=True)
+        try:
+            qr = qrcode.QRCode(
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+            )
+            qr.add_data(text)
+            qr.make(fit=True)
 
-        img = qr.make_image(fill_color="black", back_color="white")
+            img = qr.make_image(fill_color="black", back_color="white")
+            print("> Text:", text)
+        except Exception as e:
+            img = qrcode.make("Error")
+            print("> Text:", "Error")
+        
         return img
 
         

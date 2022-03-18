@@ -36,19 +36,25 @@ def main():
     if list_index is not None:
         dicts = [word_files[list_index]]
         name = word_file_names[list_index]
+    
     else:
         dicts = word_files
         name = "all"
-    
+
     for dd in dicts:
         f = open(dd, encoding='utf-8')
 
         for i, s in enumerate(f.readlines()):
-            qr_files.append(name + "-" + str(i))
+            if name != "all":
+                qr_files.append(name + "-" + str(i))
+            else:
+                qr_files.append(dd.replace("words/","").replace(".txt", "") + "-" + str(i))
             payloads.append(s)
             i += 1
 
-        file = FileHandler()
+
+
+    file = FileHandler()
 
     def genqr(text="test"):
         try:

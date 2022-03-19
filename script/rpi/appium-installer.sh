@@ -8,4 +8,5 @@ sudo apt install -y nodejs npm openjdk-11-jre openjdk-11-jdk android-sdk-build-t
 npm install appium
 npm install ../../QRCodeFuzzer/
 
+
 # TODO: add to path in .bashrc

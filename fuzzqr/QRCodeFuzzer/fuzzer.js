@@ -1,9 +1,8 @@
 const exp = require('constants');
 const fs = require('fs');
-const { get } = require('http');
-const _fuzzer_file = "./data/fuzzer.json";
-const _qrcoderr_file = "./data/qrcodes-error.txt";
-const _screen_path = "./data/screen/";
+const _json_file = "fuzzer.json";
+const _qrcoderr_file = "qrcodes-error.txt";
+const _screen_path = "screen/";
 
 // Logic of status
 //  0 = keep the same QR code shown
@@ -11,16 +10,16 @@ const _screen_path = "./data/screen/";
 
 let _fuzzer = { status: 0, file: "none", size: 0}
 
-function readFuzzer() {
-  let rawdata = fs.readFileSync(_fuzzer_file);
+function readFuzzer(path) {
+  let rawdata = fs.readFileSync(path + "/" + _json_file);
   let fuzzer = JSON.parse(rawdata);
   _fuzzer = fuzzer;
   return fuzzer;
 }
 
-function requestNewQRFuzzer() {
+function requestNewQRFuzzer(path) {
   _fuzzer.status = 1;
-  fs.writeFileSync(_fuzzer_file, JSON.stringify(_fuzzer));
+  fs.writeFileSync(path + "/" + _json_file, JSON.stringify(_fuzzer));
 }
 
 function updateAndGetSize() {
@@ -28,21 +27,21 @@ function updateAndGetSize() {
   return _fuzzer.size;
 }
 
-function saveScreenshot(image) {
+function saveScreenshot(path, image) {
   readFuzzer();
-  fs.writeFile(_screen_path + _fuzzer.file + ".png", image, 'base64', function(err) {
-    console.log("[QRCodeFuzzer] " + err);
+  fs.writeFile(path + "/" + _screen_path + _fuzzer.file + ".png", image, 'base64', function(err) {
+    console.info("[QRCodeFuzzer] " + err);
   });
 }
 
-function errorLog() {
+function errorLog(path) {
   readFuzzer();
-  fs.appendFile(_qrcoderr_file, Date() + ": " +_fuzzer.file + "\n", (err) => {
-    console.log("[QRCodeFuzzer] " + err);
+  fs.appendFile(path + "/" + _qrcoderr_file, Date() + ": " +_fuzzer.file + "\n", (err) => {
+    console.warn("[QRCodeFuzzer] " + err);
   });
 }
 
-exports._fuzzer_file = _fuzzer_file;
+exports._fuzzer_file = _json_file;
 exports._fuzzer = _fuzzer;
 exports.readFile = readFuzzer;
 exports.requestNewQR = requestNewQRFuzzer;

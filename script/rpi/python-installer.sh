@@ -1,5 +1,10 @@
 #!/bin/bash
 
-sudo apt install python3 pip3
 
-pip install -r ../../QRCodeGenerator/requirements.txt
+echo "[FUZZQR] Install python and pip"
+sudo apt update -y
+sudo apt install -y python3 python3-pip
+
+echo "[FUZZQR] Install QRCode generator requirements"
+pip install -r ../../fuzzqr/QRCodeGenerator/requirements.txt
+

@@ -29,6 +29,7 @@ def main():
     list_index = opt.list
 
     if app_index is None: 
+        print("[QRCodeGenerator] Please select an app with the argument -a")
         exit(1)
     app_fun = app_names[app_index]
     
@@ -54,7 +55,10 @@ def main():
 
     # ------------------------------------
     
-    file = FileHandler(opt.jsonpath)
+    if(opt.jsonpath):
+        file = FileHandler(opt.jsonpath)
+    else:
+        file = FileHandler()
 
 
     def genqr(text="test"):

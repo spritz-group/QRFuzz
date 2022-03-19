@@ -6,24 +6,23 @@ qr_files = []
 # ---------------- FILE HANDLER ----------------
 
 class FileHandler():
-    def __init__(self, json_file = "../QRCodeFuzzer/data"):
+    def __init__(self, json_path = "../QRCodeFuzzer/data"):
         self.fuzzer = []
-        self.initialize()
         self.iterator = 0
-        self.__jsonPathChecker(json_file)
+        self.json_file = ""
+        self.__jsonPathChecker(json_path)
+        self.initialize()
         
     
-    def __jsonPathChecker(self, json_file):
-        if json_file[-1] == "/":
-            json_file = json_file[:-1]
-        
-        print("Hello!")
+    def __jsonPathChecker(self, json_path):
+        if json_path and json_path[-1] == '/':
+            json_path = json_path[:-1]
 
-        if os.path.isfile(json_file + "/fuzzer.json") and os.access(json_file + "/fuzzer.json", os.R_OK):
-            self.json_file = json_file
+        if os.path.isfile(json_path + "/fuzzer.json") and os.access(json_path + "/fuzzer.json", os.R_OK):
+            self.json_file = json_path + "/fuzzer.json"
         else:
             print("[QRCodeGenerator] Error, the file path for the JSON file does not exists or cannot be read.")
-            # exit(1)
+            exit(1)
 
 
     def next(self):

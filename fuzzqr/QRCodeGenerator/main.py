@@ -52,9 +52,10 @@ def main():
             payloads.append(s)
             i += 1
 
+    # ------------------------------------
+    
+    file = FileHandler(opt.jsonpath)
 
-
-    file = FileHandler()
 
     def genqr(text="test"):
         try:
@@ -138,7 +139,7 @@ def main():
 def cmd():
     parser = argparse.ArgumentParser(
         description="Generate and Display QR Code while scanning with Appium-controlled app",
-        usage=f"main-display.py -l [number]\nusage: main-display.py -w [/path/to/custom/wordlist]\n\nPayload lists: \n {fuzz_type}"
+        usage=f"main.py -l [number]\nusage: main.py -w [/path/to/custom/wordlist]\n\nPayload lists: \n {fuzz_type}"
     )
     sgroup = parser.add_argument_group("Options available")
     sgroup.add_argument(
@@ -154,6 +155,12 @@ def cmd():
         type=str,
         help="Set app to use",
         choices=app_names.keys(),
+    )
+    sgroup.add_argument(
+        "--jsonpath",
+        "-j",
+        type=str,
+        help="Set path to json file to use (the json file must be named 'fuzzer.json')"
     )
     opt = parser.parse_args()
     if len(sys.argv) == 1:

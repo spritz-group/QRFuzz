@@ -35,7 +35,7 @@ function checkArguments() {
         process.exit(1);
     }
     else {
-        port = argPort
+        port = parseInt(argPort);
         console.info("[QRCodeFuzzer] Using port: " + port);
     }
 
@@ -71,8 +71,12 @@ function getAppInspector() {
     return require('./inspectors/' + arg + ".js");
 };
 
+let getPath = () => dpath;
+let getPort = () => port;
+let getDevice = () => device;
+
 exports.getAppInspector = getAppInspector;
 exports.checkArguments = checkArguments;
-exports.fuzz_path = dpath;
-exports.fuzz_port = port;
-exports.fuzz_device = device;
+exports.fuzz_path = getPath;
+exports.fuzz_port = getPort;
+exports.fuzz_device = getDevice;

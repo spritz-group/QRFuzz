@@ -22,20 +22,20 @@ function requestNewQRFuzzer(path) {
   fs.writeFileSync(path + "/" + _json_file, JSON.stringify(_fuzzer));
 }
 
-function updateAndGetSize() {
-  readFuzzer();
+function updateAndGetSize(path) {
+  readFuzzer(path);
   return _fuzzer.size;
 }
 
 function saveScreenshot(path, image) {
-  readFuzzer();
+  readFuzzer(path);
   fs.writeFile(path + "/" + _screen_path + _fuzzer.file + ".png", image, 'base64', function(err) {
     console.info("[QRCodeFuzzer] " + err);
   });
 }
 
 function errorLog(path) {
-  readFuzzer();
+  readFuzzer(path);
   fs.appendFile(path + "/" + _qrcoderr_file, Date() + ": " +_fuzzer.file + "\n", (err) => {
     console.warn("[QRCodeFuzzer] " + err);
   });

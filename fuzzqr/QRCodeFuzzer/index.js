@@ -1,6 +1,7 @@
 const wdio = require("webdriverio");
 var utils = require('./spaghetti.js');
 var fuzzer = require('./fuzzer.js');
+const fs = require('fs');
 utils.checkArguments();
 let app = utils.getAppInspector();
 let appIns = new app.Inspector();
@@ -33,7 +34,7 @@ async function main () {
   // -----------------------------------------------------------
 
   let file = "start";
-  var n = fuzzer.size();
+  var n = fuzzer.size(utils.fuzz_path());
   
   // Perform QR Checking
   for (i=0; i<n; ++i){
@@ -54,7 +55,7 @@ async function main () {
     let logcat = logs
       .filter(entry => entry.message.toLowerCase().includes(appIns.app_name) || entry.message.toLowerCase().includes(appIns.app_package))
       .map(entry => entry.message).join('\n');
-    fs.writeFile("./data/logs/" + fuzzer.readFile().file + ".txt", logcat, (err) => {
+    fs.writeFile(utils.fuzz_path() + "/logs/" + fuzzer.readFile(utils.fuzz_path()).file + ".txt", logcat, (err) => {
       console.log("[QRCodeFuzzer] " + err);
     });
     

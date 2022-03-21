@@ -131,3 +131,5 @@ dmypy.json
 
 *.png
 *.zip
+
+/QRCodeFuzzer/data/logs/*.txt

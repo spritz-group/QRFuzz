@@ -1,6 +1,7 @@
 const wdio = require("webdriverio");
 var fuzzer = require('./fuzzer.js');
 var utils = require('./spaghetti.js');
+const fs = require('fs');
 let app = utils.getAppInspector();
 let appIns = new app.Inspector();
 
@@ -47,6 +48,16 @@ async function main () {
 
     // Await for the script before taking a screenshot
     await new Promise(r => setTimeout(r, 200));
+
+    //Logcat
+    let logs = await driver.getLogs('logcat');
+    let logcat = logs
+      .filter(entry => entry.message.toLowerCase().includes(appIns.app_name) || entry.message.toLowerCase().includes(appIns.app_package))
+      .map(entry => entry.message).join('\n');
+    fs.writeFile("./data/logs/" + fuzzer.readFile().file + ".txt", logcat, (err) => {
+      console.log("[QRCodeFuzzer] " + err);
+    });
+    
   
     if (result_view && result_view.error == "no such element" ) {
       console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile().file);

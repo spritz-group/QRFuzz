@@ -7,16 +7,16 @@ class Inspector {
 
         let qr = await driver.findElement("xpath", '//android.widget.ImageView[@content-desc="QR Code"]');
         await driver.elementClick(qr.ELEMENT);
-
-        let scan = await driver.findElement("id", "com.instagram.android:id/bottom_button");
-        await driver.elementClick(scan.ELEMENT);
     }
 
     async getResultView(driver) {
-        // ??? // FIXME: Not showing error message!
+        await new Promise(r => setTimeout(r, 2000));
     }
     
-    async goBackToScan(driver) {}
+    async goBackToScan(driver) {
+        let qr = await driver.findElement("xpath", '//android.widget.ImageView[@content-desc="QR Code"]');
+        await driver.elementClick(qr.ELEMENT);
+    }
 
 }
 

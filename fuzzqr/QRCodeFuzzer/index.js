@@ -1,16 +1,18 @@
 const wdio = require("webdriverio");
-var fuzzer = require('./fuzzer.js');
 var utils = require('./spaghetti.js');
+var fuzzer = require('./fuzzer.js');
 const fs = require('fs');
+utils.checkArguments();
 let app = utils.getAppInspector();
 let appIns = new app.Inspector();
 
 const opts = {
   path: '/wd/hub',
-  port: 4723,
+  port: utils.fuzz_port(), // 4723,
   capabilities: {
     "platformName": "Android",
-    "deviceName": "TestDevice",
+    "udid": utils.fuzz_device(),
+    "deviceName": utils.fuzz_device(), // "TestDevice",
     "appPackage": appIns.app_package,
     "appActivity": appIns.app_activity,
     "automationName": "UiAutomator2",
@@ -33,11 +35,11 @@ async function main () {
   // -----------------------------------------------------------
 
   let file = "start";
-  var n = fuzzer.size();
+  var n = fuzzer.size(utils.fuzz_path());
   
   // Perform QR Checking
   for (i=0; i<n; ++i){
-    file = fuzzer.readFile().file;
+    file = fuzzer.readFile(utils.fuzz_path()).file;
     console.log("> QR code under analysis: " + file);
 
     // +---------------------------------------------------------+
@@ -54,16 +56,16 @@ async function main () {
     let logcat = logs
       .filter(entry => entry.message.toLowerCase().includes(appIns.app_name) || entry.message.toLowerCase().includes(appIns.app_package))
       .map(entry => entry.message).join('\n');
-    fs.writeFile("./data/logs/" + fuzzer.readFile().file + ".txt", logcat, (err) => {
+    fs.writeFile(utils.fuzz_path() + "/logs/" + fuzzer.readFile(utils.fuzz_path()).file + ".txt", logcat, (err) => {
       console.log("[QRCodeFuzzer] " + err);
     });
     
   
     if (result_view && result_view.error == "no such element" ) {
-      console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile().file);
-      fuzzer.log();
+      console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile(utils.fuzz_path()).file);
+      fuzzer.log(utils.fuzz_path());
       // Update QR
-      fuzzer.requestNewQR();
+      fuzzer.requestNewQR(utils.fuzz_path());
       continue;
     }
     
@@ -71,10 +73,10 @@ async function main () {
     let image = await driver.takeScreenshot();
 
     // Save screenshot to file
-    fuzzer.saveScreenshot(image);
+    fuzzer.saveScreenshot(utils.fuzz_path(), image);
 
     // Update QR
-    fuzzer.requestNewQR();
+    fuzzer.requestNewQR(utils.fuzz_path());
 
     // Await for the script before continuing
     await new Promise(r => setTimeout(r, 300));

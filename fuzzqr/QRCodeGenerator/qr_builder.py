@@ -19,7 +19,7 @@ class qrbuilder:
         return "tg://login?token=" + payload
 
     def zoom(payload: str):
-        return payload # FIXME: I didnt find qrs (?) - F
+        return payload # The QR code simply contain the meeting's invitation URL
 
     def qrbarcodereader(payload: str):
         return payload

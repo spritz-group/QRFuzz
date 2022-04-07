@@ -11,6 +11,7 @@ const opts = {
   port: utils.fuzz_port(), // 4723,
   capabilities: {
     "platformName": "Android",
+    "udid": utils.fuzz_device(),
     "deviceName": utils.fuzz_device(), // "TestDevice",
     "appPackage": appIns.app_package,
     "appActivity": appIns.app_activity,

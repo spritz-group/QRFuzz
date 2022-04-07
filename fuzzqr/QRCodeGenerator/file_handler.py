@@ -1,15 +1,29 @@
 import json
+import os
 
-fuzzer_file = "../QRCodeFuzzer/data/fuzzer.json"
 qr_files = []
 
 # ---------------- FILE HANDLER ----------------
 
 class FileHandler():
-    def __init__(self):
+    def __init__(self, json_path = "../QRCodeFuzzer/data"):
         self.fuzzer = []
-        self.initialize()
         self.iterator = 0
+        self.json_file = ""
+        self.__jsonPathChecker(json_path)
+        self.initialize()
+        
+    
+    def __jsonPathChecker(self, json_path):
+        if json_path and json_path[-1] == '/':
+            json_path = json_path[:-1]
+
+        if os.path.isfile(json_path + "/fuzzer.json") and os.access(json_path + "/fuzzer.json", os.R_OK):
+            self.json_file = json_path + "/fuzzer.json"
+        else:
+            print("[QRCodeGenerator] Error, the file path for the JSON file does not exists or cannot be read.")
+            exit(1)
+
 
     def next(self):
         if not self.hasNotNext():
@@ -27,7 +41,7 @@ class FileHandler():
         fuzzer["status"] = 0
         fuzzer["file"] = "Starting"
         fuzzer["size"] = len(qr_files)
-        f = open(fuzzer_file, 'w', encoding='utf-8')
+        f = open(self.json_file, 'w', encoding='utf-8')
         json.dump(fuzzer, f, ensure_ascii=False, indent=4)
         f.close()
         self.fuzzer = fuzzer
@@ -35,7 +49,7 @@ class FileHandler():
     def checker(self):
 
         # Read JSON file
-        f = open(fuzzer_file, 'r', encoding='utf-8')
+        f = open(self.json_file, 'r', encoding='utf-8')
         string = f.read()
         try: 
             # Decode from JSON
@@ -48,7 +62,7 @@ class FileHandler():
                 fuzzer["file"] = qr_files[self.iterator]
 
                 # Update JSON file
-                f = open(fuzzer_file, 'w', encoding='utf-8')
+                f = open(self.json_file, 'w', encoding='utf-8')
                 json.dump(fuzzer, f, ensure_ascii=False, indent=4)
                 f.close()
 

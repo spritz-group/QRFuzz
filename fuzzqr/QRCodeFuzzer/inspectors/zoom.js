@@ -7,7 +7,14 @@ class Inspector {
     	let settings = await driver.findElement("xpath", '//android.widget.RelativeLayout[@content-desc="More tab."]/android.widget.LinearLayout/android.widget.TextView');
         await driver.elementClick(settings.ELEMENT);
         
-        let scan = await driver.findElement("id", '00000000-0000-2426-ffff-ffff00000198');
+        // scroll down to make the scan button visible
+        driver.touchAction([
+            {action: 'press', x: 498, y: 1683},
+            {action: 'moveTo', x: 453, y: 691},
+            'release'
+          ]);
+
+        let scan = await driver.findElement("id", 'us.zoom.videomeetings:id/optionScanQRCode');
         await driver.elementClick(scan.ELEMENT);
         
        
@@ -20,8 +27,15 @@ class Inspector {
     async goBackToScan(driver) {
     	let cancel = await driver.findElement("xpath", '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button');
         await driver.elementClick(cancel.ELEMENT);
+        
+        // scroll down to make the scan button visible
+        driver.touchAction([
+            {action: 'press', x: 498, y: 1683},
+            {action: 'moveTo', x: 453, y: 691},
+            'release'
+          ]);
 
-        let scan = await driver.findElement("id", '00000000-0000-2426-ffff-ffff00000198');
+        let scan = await driver.findElement("id", 'us.zoom.videomeetings:id/optionScanQRCode');
         await driver.elementClick(scan.ELEMENT);
         }
 

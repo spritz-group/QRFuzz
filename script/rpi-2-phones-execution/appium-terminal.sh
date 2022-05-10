@@ -21,15 +21,16 @@ function echosuc {
 
 echo "[?] Checking script arguments"
 
-if [ -z "$1" ] || [ -z "$2" ]
+if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]
 then
-    echoerr "No argument supplied, please provide: "
+    echoerr "[ERROR] No arguments supplied, please provide: "
     echoerr "<arg1> the port number of the appium server"
-    echoerr "<arg2> a txt file path with list of apps in each line"
+    echoerr "<arg2> the device id from <adb devices>"
+    echoerr "<arg3> a txt file path with list of apps in each line"
     exit 1
 fi
 
-filename="$2"
+filename="$3"
 IFS=$'\n' read -d '' -r -a app < "$filename"
 
 echosuc "[OK] ${#app[@]} apps loaded:"
@@ -45,4 +46,25 @@ else
     exit 1
 fi
 
-echo "[?] Checking script argument"
+echo "[?] Executing the appium clients sequentially"
+echo "[?] Be aware that after each run the script will sleep for 30 seconds to wait the qrgen sync"
+
+fuzzqrdir="../../QRCodeFuzzer"
+
+for i in "${app[@]}"
+do
+	echosuc "----------- NOW EXECUTING $i -------------"
+    dir="$fuzzqrdir/data-tests/$i"
+    if [[ ! -e $dir ]]; then
+        mkdir "$dir"
+        echosuc "[OK] Creating folder because $dir did not existed"
+    else 
+        echosuc "[?] Folder $dir already exists"
+    fi
+    echo "[?] Starting node script..."
+    node index.js "$i" "$dir" "$1" "$2"
+    echosuc "----------- END $i -------------"
+    echo "[?] Sleeping for 30s"
+    sleep 30
+done
+

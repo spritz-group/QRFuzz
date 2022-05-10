@@ -7,20 +7,42 @@
 # 3) execute sequentially all the apps invoking the command for the client (remember to create a sleep of 15 seconds after closing the client instance)
 
 
+function echoerr {
+    echo -e "\e[31m$1\e[39m"
+}
+
+function echosuc {
+    echo -e "\e[32m$1\e[39m"
+}
+
 # Define the APPS 
 
 # apps=("wallapop" "tiktok" "satispay" "posteid" "telegram" "zoom" "qrbarcodereader" "io" "shein" "instagram" "whatsapp" "snapchat" "paypal")
 
-if [ -z "$1" ]
-    then
-        echo "No arguments supplied, please select a txt file with list of apps as single argument"
-        exit 1
+echo "[?] Checking script arguments"
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    echoerr "No argument supplied, please provide: "
+    echoerr "<arg1> the port number of the appium server"
+    echoerr "<arg2> a txt file path with list of apps in each line"
+    exit 1
 fi
 
-filename="$1"
+filename="$2"
 IFS=$'\n' read -d '' -r -a app < "$filename"
 
-echo "${app[1]}"
+echosuc "[OK] ${#app[@]} apps loaded:"
+echosuc "${app[*]}"
 
+echo "[?] Check if at least one appium server is running"
 
-# --- DO NOT TOUCH UNDER THIS LINE ---
+if pgrep -x "node /usr/local/bin/appium" > /dev/null
+then
+    echosuc "[OK] Appium server is running"
+else
+    echoerr "[ERROR] Appium server is not running in the background. Please start it before continuing."
+    exit 1
+fi
+
+echo "[?] Checking script argument"

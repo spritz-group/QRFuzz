@@ -92,7 +92,7 @@ def main():
     if opt.position == "left":
         x_cordinate = int((screen_width/2) - (window_width))
     elif opt.position == "right":
-        x_cordinate = int((screen_width/2) + (window_width/2))
+        x_cordinate = int((screen_width/2) + (window_width/4))
     else:
         x_cordinate = int((screen_width/2) - (window_width/2))
 

@@ -9,7 +9,8 @@
 
 
 # CHANGE THIS IF NEEDED
-fuzzqrdir="../../QRCodeGenerator"
+qrgendir=$(realpath ../../fuzzqr/QRCodeGenerator)
+qrfuzzdir=$(realpath ../../fuzzqr/QRCodeFuzzer)
 
 
 # Do not edit under here
@@ -69,7 +70,7 @@ for i in "${app[@]}"
 do
     echolog "Current analysis: $i"
 	echosuc "----------- NOW EXECUTING $i -------------"
-    dir="$fuzzqrdir/data-tests/$i"
+    dir="$qrfuzzdir/data-tests/$i"
     if [[ ! -e $dir ]]; then
         mkdir "$dir"
         mkdir "$dir/screen"
@@ -84,11 +85,11 @@ do
     fi
     echolog "Python script START for $i"
     echo "[?] Starting python script..."
-    python "$fuzzqrdir"/main.py -a "$i" -j "$dir" -p "$1"
+    python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1"
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 10s"
     echolog "Python script FINISH for $i"
-    sleep 1
+    sleep 5
 done
 
 echolog "QRGen Terminal Script exited"

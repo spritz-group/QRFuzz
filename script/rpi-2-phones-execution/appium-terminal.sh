@@ -9,7 +9,8 @@
 
 
 # CHANGE THIS IF NEEDED
-fuzzqrdir="../../QRCodeFuzzer"
+qrgendir=$(realpath ../../fuzzqr/QRCodeGenerator)
+qrfuzzdir=$(realpath ../../fuzzqr/QRCodeFuzzer)
 
 
 # Do not edit under here
@@ -72,7 +73,7 @@ for i in "${app[@]}"
 do
      echolog "Current analysis: $i"
 	echosuc "----------- NOW EXECUTING $i -------------"
-    dir="$fuzzqrdir/data-tests/$i"
+    dir="$qrfuzzdir/data-tests/$i"
     if [[ ! -e $dir ]]; then
         mkdir "$dir"
         mkdir "$dir/screen"
@@ -87,7 +88,7 @@ do
     fi
     echolog "Node script START for $i"
     echo "[?] Starting node script..."
-    node "$fuzzqrdir"/index.js "$i" "$dir" "$1" "$2"
+    node "$qrfuzzdir"/index.js "$i" "$dir" "$1" "$2"
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 30s"
     echolog "Node script FINISH for $i"

@@ -81,7 +81,24 @@ def main():
     # ----------- TK -----------
     window = tk.Tk()
     window.title("QR Code Visualizer")
-    window.geometry("800x800")
+
+    window_height = 800
+    window_width = 800
+
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    y_cordinate = int((screen_height/2) - (window_height/2))
+
+    if opt.position == "left":
+        x_cordinate = int((screen_width/2) - (window_width))
+    elif opt.position == "right":
+        x_cordinate = int((screen_width/2) + (window_width/2))
+    else:
+        x_cordinate = int((screen_width/2) - (window_width/2))
+
+    window.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
+
+    #window.geometry("800x800")
     window.configure(background='white')
 
     # ------ Canvas
@@ -165,6 +182,13 @@ def cmd():
         "-j",
         type=str,
         help="Set path to json file to use (the json file must be named 'fuzzer.json')"
+    )
+    sgroup.add_argument(
+        "--position",
+        "-p",
+        type=str,
+        help="Set position of the window in the screen",
+        choices=("left", "right", "center")
     )
     opt = parser.parse_args()
     if len(sys.argv) == 1:

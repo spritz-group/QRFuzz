@@ -1,11 +1,18 @@
 #!/bin/bash
 
-## TODO: follow this https://github.com/Maxelweb/FuzzQRTestingUNIPD/issues/7
+## Appium Terminal Script 
 
 # 1) get a list of all apps
 # 2) get argument with the port of appium server and working folder path
 # 3) execute sequentially all the apps invoking the command for the client (remember to create a sleep of 15 seconds after closing the client instance)
+## follow this https://github.com/Maxelweb/FuzzQRTestingUNIPD/issues/7
 
+
+# CHANGE THIS IF NEEDED
+fuzzqrdir="../../QRCodeFuzzer"
+
+
+# Do not edit under here
 
 function echoerr {
     echo -e "\e[31m$1\e[39m"
@@ -15,10 +22,14 @@ function echosuc {
     echo -e "\e[32m$1\e[39m"
 }
 
-# Define the APPS 
+timestamp=$(date +%s)
 
-# apps=("wallapop" "tiktok" "satispay" "posteid" "telegram" "zoom" "qrbarcodereader" "io" "shein" "instagram" "whatsapp" "snapchat" "paypal")
+function echolog {
+    printf '[%s] %s\n' "$(date +%F_%H-%M-%S)" "$1" >> log-appium-terminal-"$timestamp".txt
+}
 
+
+echosuc "[ APPIUM Terminal Script ]"
 echo "[?] Checking script arguments"
 
 if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]
@@ -49,22 +60,38 @@ fi
 echo "[?] Executing the appium clients sequentially"
 echo "[?] Be aware that after each run the script will sleep for 30 seconds to wait the qrgen sync"
 
-fuzzqrdir="../../QRCodeFuzzer"
+echolog "Appium Terminal Script started"
+echolog "-- CONFIGURATION"
+echolog "Port number for appium server: $1"
+echolog "Device ID: $2"
+echolog "Number of apps loaded: ${#app[@]}"
+echolog "List of apps loaded: ${app[*]}"
+echolog "-- EXECUTION"
 
 for i in "${app[@]}"
 do
+     echolog "Current analysis: $i"
 	echosuc "----------- NOW EXECUTING $i -------------"
     dir="$fuzzqrdir/data-tests/$i"
     if [[ ! -e $dir ]]; then
         mkdir "$dir"
-        echosuc "[OK] Creating folder because $dir did not existed"
+        mkdir "$dir/screen"
+        mkdir "$dir/logs"
+        touch "$dir/fuzzer.json"
+        touch "$dir/qrcodes-error.txt"
+        echolog "Folder exists: No, just created at $dir"
+        echosuc "[OK] Creating folders and files because $dir did not existed"
     else 
+        echolog "Folder exists: Yes, at $dir"
         echosuc "[?] Folder $dir already exists"
     fi
+    echolog "Node script START for $i"
     echo "[?] Starting node script..."
-    node index.js "$i" "$dir" "$1" "$2"
+    node "$fuzzqrdir"/index.js "$i" "$dir" "$1" "$2"
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 30s"
+    echolog "Node script FINISH for $i"
     sleep 30
 done
 
+echolog "Appium Terminal Script exited"

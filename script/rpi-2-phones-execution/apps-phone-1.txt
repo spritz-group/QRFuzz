@@ -4,10 +4,3 @@ satispay
 posteid
 telegram
 zoom
-qrbarcodereader
-io
-shein
-instagram
-whatsapp
-snapchat
-paypal

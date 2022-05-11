@@ -1,0 +1,7 @@
+qrbarcodereader
+io
+shein
+instagram
+whatsapp
+snapchat
+paypal

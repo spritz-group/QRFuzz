@@ -4,7 +4,7 @@ class Inspector {
     app_activity = "org.telegram.ui.LaunchActivity";
 
     async goToScan(driver) {
-        let menu = await driver.findElement("xpath", '//android.widget.ImageView[@content-desc="Open navigation menu"]');
+        let menu = await driver.findElement("xpath", '//android.widget.ImageView[@content-desc="Apri menu di navigazione"]');
         await driver.elementClick(menu.ELEMENT);
 
         let settings = await driver.findElement("xpath", '//android.widget.FrameLayout[8]');
@@ -18,7 +18,10 @@ class Inspector {
     }
 
     async getResultView(driver) {
-        return await driver.findElement("xpath", '//android.widget.TextView[@text="OK"]');
+        await new Promise(r => setTimeout(r, 2500));
+        let goback = await driver.findElement("xpath", 'android.widget.ImageView[@content-desc="Torna indietro"]');
+        await driver.elementClick(goback.ELEMENT);
+        //return await driver.findElement("xpath", '//android.widget.TextView[@text="OK"]');
     }
     
     async goBackToScan(driver) {

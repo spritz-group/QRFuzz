@@ -18,9 +18,9 @@ class Inspector {
     }
 
     async getResultView(driver) {
+        // activate the sleep if you are using generic qr codes
         await new Promise(r => setTimeout(r, 2500));
-        let goback = await driver.findElement("xpath", 'android.widget.ImageView[@content-desc="Torna indietro"]');
-        await driver.elementClick(goback.ELEMENT);
+        // ... or activate the following if you are instead using ad-hoc qr codes
         //return await driver.findElement("xpath", '//android.widget.TextView[@text="OK"]');
     }
     

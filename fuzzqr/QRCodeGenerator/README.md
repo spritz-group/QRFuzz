@@ -7,6 +7,7 @@ This program aims to generate or visualize QR codes of fake green pass with mali
 
 - Python 3.9+ and `pip`
     - For the first time run `pip install -r requirements.txt` to install all the mandatory dependencies
+- Install also tkinter using: `sudo apt-get install python3-tk`
 
 ### Usage
 

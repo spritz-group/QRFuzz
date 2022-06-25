@@ -4,7 +4,10 @@ class Inspector {
     app_activity = "com.discord.app.AppActivity$Main";
 
     async goToScan(driver) {
-    	let settings = await driver.findElement("xpath", '//android.widget.RelativeLayout[@content-desc="Settings tab"]');
+    	let tab = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Attiva/disattiva drawer"]');
+        await driver.elementClick(tab.ELEMENT);  
+
+    	let settings = await driver.findElement("id", 'com.discord:id/tabs_host_bottom_nav_user_settings_item');
         await driver.elementClick(settings.ELEMENT);  
 
         let qr = await driver.findElement("id", 'com.discord:id/qr_scanner');
@@ -16,7 +19,9 @@ class Inspector {
     }
     
     async goBackToScan(driver) {
-    	let settings = await driver.findElement("xpath", '//android.widget.RelativeLayout[@content-desc="Settings tab"]');
+    	// let settings = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Attiva/disattiva drawer"]');
+        // await driver.elementClick(settings.ELEMENT);  
+    	let settings = await driver.findElement("id", 'com.discord:id/tabs_host_bottom_nav_user_settings_item');
         await driver.elementClick(settings.ELEMENT);  
 
         let qr = await driver.findElement("id", 'com.discord:id/qr_scanner');

@@ -36,6 +36,9 @@ app_names = {
     "whatsapp" : qrbuilder.whatsapp,
     "snapchat" : qrbuilder.snapchat,
     "paypal" : qrbuilder.paypal,
+    "twitter" : qrbuilder.twitter,
+    "discord" : qrbuilder.discord,
+    "ebay" : qrbuilder.ebay,
 }
 
 

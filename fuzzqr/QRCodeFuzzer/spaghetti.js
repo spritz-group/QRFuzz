@@ -17,6 +17,7 @@ function checkArguments() {
         console.warn("[QRCodeFuzzer] Defaulting to path " + dpath);
     else {
         dpath = argPath
+
         if(dpath.charAt(dpath.length-1) == "/"){
             dpath = dpath.slice(0, -1);
         }

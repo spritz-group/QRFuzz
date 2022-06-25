@@ -21,7 +21,7 @@ class FileHandler():
         if os.path.isfile(json_path + "/fuzzer.json") and os.access(json_path + "/fuzzer.json", os.R_OK):
             self.json_file = json_path + "/fuzzer.json"
         else:
-            print("[QRCodeGenerator] Error, the file path for the JSON file does not exists or cannot be read.")
+            print("[QRCodeGenerator] Error, the file path (" + json_path + "/fuzzer.json" + ") for the JSON file does not exists or cannot be read.")
             exit(1)
 
 

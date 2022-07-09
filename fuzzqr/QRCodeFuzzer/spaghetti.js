@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 let port = 4723;
-let dpath = "./data";
+let dpath = "./data-tests";
 let device = "TestDevice"
 
 function checkArguments() {

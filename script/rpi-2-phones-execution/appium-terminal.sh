@@ -48,15 +48,15 @@ IFS=$'\n' read -d '' -r -a app < "$filename"
 echosuc "[OK] ${#app[@]} apps loaded:"
 echosuc "${app[*]}"
 
-echo "[?] Check if at least one appium server is running"
 
-if pgrep -x "node /usr/local/bin/appium" > /dev/null
-then
-    echosuc "[OK] Appium server is running"
-else
-    echoerr "[ERROR] Appium server is not running in the background. Please start it before continuing."
-    exit 1
-fi
+# echo "[?] Check if at least one appium server is running"
+# if pgrep -x "node /usr/local/bin/appium" > /dev/null
+# then
+#     echosuc "[OK] Appium server is running"
+# else
+#     echoerr "[ERROR] Appium server is not running in the background. Please start it before continuing."
+#     exit 1
+# fi
 
 echo "[?] Executing the appium clients sequentially"
 echo "[?] Be aware that after each run the script will sleep for 30 seconds to wait the qrgen sync"

@@ -1,5 +1,7 @@
 {
     "status": 0,
     "file": "starting",
-    "size": 123
+    "current": 1,
+    "size": 123,
+    "payload": "pippo"
 }

@@ -31,7 +31,7 @@ function updateAndGetSize(path) {
 function saveLog(path, behavior="UNKNOWN") {
   readFuzzer(path);
   line = Date() + "\t" 
-    + behavior
+    + behavior + "\t"
     + _fuzzer.file + "\t"
     + _fuzzer.current + "/" + _fuzzer.size + "\t"
     + _fuzzer.payload + "\t"

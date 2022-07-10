@@ -1,5 +1,5 @@
 #
-# Display for FakeGreenPass generation
+# Display QRCodeGenerator
 # --------------------
 
 from qrgen import *
@@ -11,7 +11,7 @@ import argparse
 import qrcode
 import tkinter as tk
 
-from file_handler import *
+from file_handler import FileHandler, qr_files, payloads
 
 # --------------------- CONFIG ---------------------
 
@@ -23,7 +23,6 @@ update_time = 500
 def main():   
     
     opt = cmd()
-    payloads = []
     
     app_index = opt.app
     list_index = opt.list

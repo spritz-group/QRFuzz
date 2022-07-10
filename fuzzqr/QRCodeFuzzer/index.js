@@ -11,15 +11,11 @@ const opts = {
   port: utils.fuzz_port(), // 4723,
   capabilities: {
     "platformName": "Android",
-    // "udid": utils.fuzz_device(),
-    //"deviceName": utils.fuzz_device(), // "TestDevice",
     "appPackage": appIns.app_package,
     "appActivity": appIns.app_activity,
     "automationName": "UiAutomator2",
     "noReset": "true"
   }
-  // "app": appIns.app_apk, // not needed
-  // "platformVersion" : "9.0", // cross platform
 };
 
 async function main () {
@@ -63,7 +59,7 @@ async function main () {
   
     if (result_view && result_view.error == "no such element" ) {
       console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile(utils.fuzz_path()).file);
-      fuzzer.log(utils.fuzz_path());
+      fuzzer.log(utils.fuzz_path(), "ERROR_QR_UNREADABLE");
       // Update QR
       fuzzer.requestNewQR(utils.fuzz_path());
       continue;
@@ -74,6 +70,9 @@ async function main () {
 
     // Save screenshot to file
     fuzzer.saveScreenshot(utils.fuzz_path(), image);
+
+    // Add log
+    fuzzer.log(utils.fuzz_path(), "OK");
 
     // Update QR
     fuzzer.requestNewQR(utils.fuzz_path());
@@ -95,5 +94,3 @@ async function main () {
 }
 
 main();
-
-

@@ -2,11 +2,12 @@ import json
 import os
 
 qr_files = []
+payloads = []
 
 # ---------------- FILE HANDLER ----------------
 
 class FileHandler():
-    def __init__(self, json_path = "../QRCodeFuzzer/data"):
+    def __init__(self, json_path = "../QRCodeFuzzer/data-tests"):
         self.fuzzer = []
         self.iterator = 0
         self.json_file = ""
@@ -39,8 +40,10 @@ class FileHandler():
         # Initialize JSON file
         fuzzer = {}
         fuzzer["status"] = 0
-        fuzzer["file"] = "Starting"
+        fuzzer["file"] = "initial"
+        fuzzer["current"] = self.iterator
         fuzzer["size"] = len(qr_files)
+        fuzzer["payload"] = "test"
         f = open(self.json_file, 'w', encoding='utf-8')
         json.dump(fuzzer, f, ensure_ascii=False, indent=4)
         f.close()
@@ -59,7 +62,9 @@ class FileHandler():
 
                 # Set "status" back to 0 and update file name
                 fuzzer["status"] = 0
+                fuzzer["current"] = self.iterator
                 fuzzer["file"] = qr_files[self.iterator]
+                fuzzer["payload"] = payloads[self.iterator]
 
                 # Update JSON file
                 f = open(self.json_file, 'w', encoding='utf-8')

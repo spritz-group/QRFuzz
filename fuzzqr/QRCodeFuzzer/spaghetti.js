@@ -3,15 +3,17 @@ const fs = require('fs');
 
 let port = 4723;
 let dpath = "./data-tests";
-let device = "TestDevice"
+let device = "TestDevice";
+let dstart = 0;
 
 function checkArguments() {
 
-    console.info("[Usage:] node index.js <app_inspector> [optional: <data_path> <appium_port> <appium_device_udid>]");
+    console.info("[Usage:] node index.js <app_inspector> [optional: <data_path> <appium_port> <appium_device_udid> <starting_from>]");
     
     let argPath = process.argv[3];
     let argPort = process.argv[4];
     let argDevice = process.argv[5];
+    let argStartFrom = process.argv[6];
 
     if(argPath === undefined)
         console.warn("[QRCodeFuzzer] Defaulting to path " + dpath);
@@ -47,6 +49,17 @@ function checkArguments() {
         console.info("[QRCodeFuzzer] Using device name: " + device);
     }
 
+    if(argStartFrom === undefined)
+        console.warn("[QRCodeFuzzer] Default start from " + dstart);
+    else if(isNaN(argStartFrom)) {
+        console.error("[QRCodeFuzzer] Wrong start, not a number");
+        process.exit(1);
+    }
+    else {
+        startFrom = parseInt(argStartFrom);
+        console.info("[QRCodeFuzzer] Starting from: " + dstart);
+    }
+
 }
 
 // This function, which is an elegant spaghetti code, checks and include the correct
@@ -75,9 +88,11 @@ function getAppInspector() {
 let getPath = () => dpath;
 let getPort = () => port;
 let getDevice = () => device;
+let getStartFrom = () => startFrom;
 
 exports.getAppInspector = getAppInspector;
 exports.checkArguments = checkArguments;
 exports.fuzz_path = getPath;
 exports.fuzz_port = getPort;
 exports.fuzz_device = getDevice;
+exports.fuzz_start = getStartFrom;

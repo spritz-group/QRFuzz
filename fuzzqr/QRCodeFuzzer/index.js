@@ -18,23 +18,47 @@ const opts = {
   }
 };
 
+const keypress = async () => {
+  process.stdin.setRawMode(true)
+  return new Promise(resolve => process.stdin.once('data', data => {
+    const byteArray = [...data]
+    if (byteArray.length > 0 && byteArray[0] === 3) {
+      console.log('[QRCodeFuzzer] Exit program')
+      process.exit(1)
+    }
+    process.stdin.setRawMode(false)
+    resolve()
+  }))
+}
+
 async function main () {
   const driver = await wdio.remote(opts); 
 
   // Wait before crashing if not finding an element
   await driver.setTimeout({ 'implicit': 10000 });
 
-  // +---------------------------------------------------------+
-  // | GO TO SCAN PAGE                                         |
-  // +---------------------------------------------------------+
-  await appIns.goToScan(driver);
-  // -----------------------------------------------------------
+  try {
+    // +---------------------------------------------------------+
+    // | GO TO SCAN PAGE                                         |
+    // +---------------------------------------------------------+
+    await appIns.goToScan(driver);
+    // -----------------------------------------------------------
+  } catch (error) {
+    console.log("[QRCodeFuzzer] Unable to go to the scan page (error: " + error + ")");
+    console.log("[QRCodeFuzzer] Please place the App manually in the scan page; then press any key to continue...")
+    await keypress()
+  }
 
   let file = "start";
   var n = fuzzer.size(utils.fuzz_path());
-  
+  var start = utils.fuzz_start();
+
+  if(start > 0) {
+    console.log("[QRCodeFuzzer] Resuming QR codes from <"+start+"> of <" + n + ">")
+  }
+
   // Perform QR Checking
-  for (i=0; i<n; ++i){
+  for (i=start; i<n; ++i){
     file = fuzzer.readFile(utils.fuzz_path()).file;
     console.log("> QR code under analysis: " + file);
 
@@ -80,14 +104,21 @@ async function main () {
     // Await for the script before continuing
     await new Promise(r => setTimeout(r, 300));
 
-    // Go back
-    await driver.back();
+    try {
+
+      // Go back
+      await driver.back();
     
-    // +---------------------------------------------------------+
-    // | BACK TO SCAN (if needed)                                |
-    // +---------------------------------------------------------+
-    await appIns.goBackToScan(driver);
-    // -----------------------------------------------------------
+      // +---------------------------------------------------------+
+      // | BACK TO SCAN (if needed)                                |
+      // +---------------------------------------------------------+
+      await appIns.goBackToScan(driver);
+      // -----------------------------------------------------------
+    } catch (error) {
+      console.log("[QRCodeFuzzer] Unable to get back to the scan page (error: " + error + ")");
+      console.log("[QRCodeFuzzer] Please place the App manually in the scan page; then press any key to continue...")
+      await keypress()
+    }
   }
 
   await driver.deleteSession();

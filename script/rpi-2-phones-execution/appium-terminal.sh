@@ -9,7 +9,6 @@
 
 
 # CHANGE THIS IF NEEDED
-qrgendir=$(realpath ../../fuzzqr/QRCodeGenerator)
 qrfuzzdir=$(realpath ../../fuzzqr/QRCodeFuzzer)
 
 
@@ -39,11 +38,19 @@ then
     echoerr "<arg1> the port number of the appium server"
     echoerr "<arg2> the device id from <adb devices>"
     echoerr "<arg3> a txt file path with list of apps in each line"
+    echoerr "[OPTIONAL] <arg4> a position number to start from (default: 0)"
     exit 1
 fi
 
 filename="$3"
 IFS=$'\n' read -d '' -r -a app < "$filename"
+
+if [ -z "$3" ]
+then
+    start=0
+else
+    start="$4"
+fi
 
 echosuc "[OK] ${#app[@]} apps loaded:"
 echosuc "${app[*]}"
@@ -88,7 +95,7 @@ do
     fi
     echolog "Node script START for $i"
     echo "[?] Starting node script..."
-    node "$qrfuzzdir"/index.js "$i" "$dir" "$1" "$2"
+    node "$qrfuzzdir"/index.js "$i" "$dir" "$1" "$2" "$start"
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 30s"
     echolog "Node script FINISH for $i"

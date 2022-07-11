@@ -100,8 +100,6 @@ def main():
         x_cordinate = int((screen_width/2) - (window_width/2))
 
     window.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
-
-    #window.geometry("800x800")
     window.configure(background='white')
 
     # ------ Canvas
@@ -111,7 +109,6 @@ def main():
 
     ph = ImageTk.PhotoImage(img)
     label = tk.Label(window, image= ph)
-    # canvas.create_bitmap(100, 100, bitmap=img, anchor=tk.NW)
 
 
     def update():
@@ -119,15 +116,14 @@ def main():
         if file.checker():
             gp = app_fun(payloads[file.iterator])
             img = genqr(gp)
-            
             new_width = label.winfo_width()
             new_height = label.winfo_height()
             image = img.resize((new_width, new_height))
             photo = ImageTk.PhotoImage(image)
             label.config(image = photo)
             label.image = photo 
-            # panel.config(image= img2)
-            # panel.image = img2 #IPER MEGA IMPORTANT
+            # Important to reset colors if the string contains bash colors
+            print("> Current iterator position: " + file.iterator + " \033[0m")
             file.next()
             window.after(update_time, update)
         else:

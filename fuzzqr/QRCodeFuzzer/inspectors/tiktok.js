@@ -16,13 +16,15 @@ class Inspector {
         let btn_settings = await driver.findElement("xpath", "//android.widget.LinearLayout[2]");
         await driver.elementClick(btn_settings.ELEMENT);
         
-        // Click "qr"
-        let btn_qr = await driver.findElement("xpath", '//android.widget.RelativeLayout[@content-desc="QR code"]');
-        await driver.elementClick(btn_qr.ELEMENT);
+        // 2022-07-12 not working 
         
-        // Click "Scan"
-        let btn_scan = await driver.findElement("id", "com.zhiliaoapp.musically:id/di5");
-        await driver.elementClick(btn_scan.ELEMENT);
+        // // Click "qr"
+        // let btn_qr = await driver.findElement("xpath", '//android.widget.RelativeLayout[@content-desc="QR code"]');
+        // await driver.elementClick(btn_qr.ELEMENT);
+        
+        // // Click "Scan"
+        // let btn_scan = await driver.findElement("id", "com.zhiliaoapp.musically:id/di5");
+        // await driver.elementClick(btn_scan.ELEMENT);
     }
 
     async getResultView(driver) {

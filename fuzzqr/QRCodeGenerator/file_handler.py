@@ -25,7 +25,6 @@ class FileHandler():
             print("[QRCodeGenerator] Error, the file path (" + json_path + "/fuzzer.json" + ") for the JSON file does not exists or cannot be read.")
             exit(1)
 
-
     def next(self):
         if not self.hasNotNext():
             self.iterator += 1

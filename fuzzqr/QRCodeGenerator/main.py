@@ -53,12 +53,16 @@ def main():
             i += 1
 
     # ------------------------------------
-    
-    if(opt.jsonpath):
+
+    # Set Json path     
+    if opt.jsonpath:
         file = FileHandler(opt.jsonpath)
     else:
         file = FileHandler()
 
+    # Set starting position
+    if opt.start_from:
+        file.iterator = opt.start_from
 
     def genqr(text="test"):
         try:
@@ -188,6 +192,12 @@ def cmd():
         type=str,
         help="Set position of the window in the screen",
         choices=("left", "right", "center")
+    )
+    sgroup.add_argument(
+        "--start-from",
+        "-sf",
+        type=int,
+        help="Start QR Code scan from the given position"
     )
     opt = parser.parse_args()
     if len(sys.argv) == 1:

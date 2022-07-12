@@ -4,6 +4,9 @@ class Inspector {
     app_activity = "com.wallapop.activities.HomeActivity";
 
     async goToScan(driver) {
+
+        // 2022-07-12: app crash when gets to result view
+
         // Click "Profile"
         let btn_profile = await driver.findElement("id", "com.wallapop:id/profile");
         await driver.elementClick(btn_profile.ELEMENT);
@@ -12,9 +15,9 @@ class Inspector {
         let btn_wallet = await driver.findElement("id", "com.wallapop:id/wallet_amount");
         await driver.elementClick(btn_wallet.ELEMENT);
         
-        // Click "Scan"
-        let btn_receive_money = await driver.findElement("id", "com.wallapop:id/receiveMoneyButton");
-        await driver.elementClick(btn_receive_money.ELEMENT);
+        // // Click "Scan"
+        // let btn_receive_money = await driver.findElement("id", "com.wallapop:id/receiveMoneyButton");
+        // await driver.elementClick(btn_receive_money.ELEMENT);
     }
 
     async getResultView(driver) {

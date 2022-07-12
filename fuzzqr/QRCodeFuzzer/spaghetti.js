@@ -56,7 +56,7 @@ function checkArguments() {
         process.exit(1);
     }
     else {
-        startFrom = parseInt(argStartFrom);
+        dstart = parseInt(argStartFrom);
         console.info("[QRCodeFuzzer] Starting from: " + dstart);
     }
 
@@ -88,7 +88,7 @@ function getAppInspector() {
 let getPath = () => dpath;
 let getPort = () => port;
 let getDevice = () => device;
-let getStartFrom = () => startFrom;
+let getStartFrom = () => dstart;
 
 exports.getAppInspector = getAppInspector;
 exports.checkArguments = checkArguments;

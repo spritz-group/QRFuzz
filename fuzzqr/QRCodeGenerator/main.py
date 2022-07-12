@@ -123,7 +123,7 @@ def main():
             label.config(image = photo)
             label.image = photo 
             # Important to reset colors if the string contains bash colors
-            print("> Current iterator position: " + file.iterator + " \033[0m")
+            print("> Current iterator position: " + str(file.iterator) + " \033[0m")
             file.next()
             window.after(update_time, update)
         else:

@@ -7,7 +7,7 @@
     "test": "mocha",
     "wallapop": "node ./index.js wallapop",
     "tiktok": "node ./index.js tiktok",
-    "satispay": "node ./index.js satispay",
+    "satispay": "node ./index.js satispay ./data-tests/satispay",
     "posteid": "node ./index.js posteid",
     "telegram": "node ./index.js telegram",
     "zoom": "node ./index.js zoom",

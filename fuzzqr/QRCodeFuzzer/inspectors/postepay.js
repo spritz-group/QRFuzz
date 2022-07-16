@@ -4,20 +4,20 @@ class Inspector {
     app_activity = "posteitaliane.posteapp.apppostepay.ui.activity.SplashActivity";
 
     async goToScan(driver) {
-    	let scan = await driver.findElement("xpath", '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView');
+    	let scan = await driver.findElement("id", 'posteitaliane.posteapp.apppostepay:id/access_qr');
         await driver.elementClick(scan.ELEMENT);       
        
     }
 
     async getResultView(driver) {
-        return await driver.findElement("xpath", "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.TextView");
+        return await driver.findElement("id", "posteitaliane.posteapp.apppostepay:id/md_titleFrame");
     }
     
     async goBackToScan(driver) {
-    	let ok = await driver.findElement("xpath", '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView');
+    	let ok = await driver.findElement("id", 'posteitaliane.posteapp.apppostepay:id/md_buttonDefaultPositive');
         await driver.elementClick(ok.ELEMENT);
 
-    	let scan = await driver.findElement("xpath", '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView');
+    	let scan = await driver.findElement("id", 'posteitaliane.posteapp.apppostepay:id/access_qr');
         await driver.elementClick(scan.ELEMENT);   
         }
 

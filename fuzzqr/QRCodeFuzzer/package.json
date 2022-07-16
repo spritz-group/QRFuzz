@@ -16,7 +16,8 @@
     "shein": "node ./index.js shein",
     "instagram": "node ./index.js instagram",
     "snapchat": "node ./index.js snapchat",
-    "paypal": "node ./index.js paypal"
+    "paypal": "node ./index.js paypal",
+    "postepay": "node ./index.js postepay"
   },
   "keywords": [],
   "author": "",

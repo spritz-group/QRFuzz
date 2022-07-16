@@ -39,6 +39,7 @@ app_names = {
     "twitter" : qrbuilder.twitter,
     "discord" : qrbuilder.discord,
     "ebay" : qrbuilder.ebay,
+    "postepay" : qrbuilder.postepay,
 }
 
 

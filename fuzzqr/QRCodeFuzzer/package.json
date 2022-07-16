@@ -17,7 +17,8 @@
     "instagram": "node ./index.js instagram",
     "snapchat": "node ./index.js snapchat",
     "paypal": "node ./index.js paypal",
-    "postepay": "node ./index.js postepay"
+    "postepay": "node ./index.js postepay",
+    "bancoposta": "node ./index.js bancoposta"
   },
   "keywords": [],
   "author": "",

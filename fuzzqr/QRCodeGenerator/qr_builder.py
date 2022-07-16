@@ -58,3 +58,8 @@ class qrbuilder:
     
     def postepay(payload: str):
         return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
+    
+    def bancoposta(payload: str):
+        return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
+
+    

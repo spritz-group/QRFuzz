@@ -2,6 +2,9 @@
 
 Fuzz QR testing for multiple applications @ UNIPD 2022
 
+![FuzzQR banner](https://user-images.githubusercontent.com/34033090/152697122-2000350a-edfa-4129-b70a-15025e45162e.png)
+
+
 ## Installation
 
 In order to install this application you must follow the requirements inside the READMEs in each folder `QRCodeFuzzer` and `QRCodeGenerator`. 

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Python installer
 
 echo "[FUZZQR] Installing python and pip"
 sudo apt update -y

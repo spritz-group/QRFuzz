@@ -1,7 +1,7 @@
 const exp = require('constants');
 const fs = require('fs');
 const _json_file = "fuzzer.json";
-// const _qrcoderr_file = "qrcodes-error.csv";
+const _qrcodepayloads_file = "qrcodes-payloads.txt";
 const _qrcodelogs_file = "qrcodes-logs.csv";
 const _screen_path = "screen/";
 
@@ -33,10 +33,14 @@ function saveLog(path, behavior="UNKNOWN") {
   line = Date() + "\t" 
     + behavior + "\t"
     + _fuzzer.file + "\t"
-    + _fuzzer.current + "/" + _fuzzer.size + "\t"
-    + _fuzzer.payload;
+    + _fuzzer.current + "/" + _fuzzer.size;
   fs.appendFile(path + "/" + _qrcodelogs_file, line, (err) => {
-    console.warn("[QRCodeFuzzer] SAVE_LOG append error: " + err);
+    console.warn("[QRCodeFuzzer] SAVE_LOG (logs) append error: " + err);
+  });
+
+  line_pay = "[" + _fuzzer.current + "]\t" + _fuzzer.payload;
+  fs.appendFile(path + "/" + _qrcodepayloads_file, line_pay, (err) => {
+    console.warn("[QRCodeFuzzer] SAVE_LOG (payload) append error: " + err);
   });
 }
 

@@ -86,6 +86,7 @@ do
         mkdir "$dir/logs"
         touch "$dir/fuzzer.json"
         touch "$dir/qrcodes-logs.csv"
+        touch "$dir/qrcodes-payloads.txt"
         echolog "Folder exists: No, just created at $dir"
         echosuc "[OK] Creating folders and files because $dir did not existed"
     else 

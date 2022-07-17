@@ -34,7 +34,7 @@ function saveLog(path, behavior="UNKNOWN") {
     + behavior + "\t"
     + _fuzzer.file + "\t"
     + _fuzzer.current + "/" + _fuzzer.size + "\t"
-    + _fuzzer.payload + "\t"
+    + _fuzzer.payload;
   fs.appendFile(path + "/" + _qrcodelogs_file, line, (err) => {
     console.warn("[QRCodeFuzzer] SAVE_LOG append error: " + err);
   });
@@ -46,13 +46,6 @@ function saveScreenshot(path, image) {
     console.info("[QRCodeFuzzer] SAVE_SCREENSHOT error: " + err);
   });
 }
-
-// function errorLog(path) {
-//   readFuzzer(path);
-//   fs.appendFile(path + "/" + _qrcoderr_file, Date() + ": " +_fuzzer.file + "\n", (err) => {
-//     console.warn("[QRCodeFuzzer] ERROR_LOG append error: " + err);
-//   });
-// }
 
 exports._fuzzer_file = _json_file;
 exports._fuzzer = _fuzzer;

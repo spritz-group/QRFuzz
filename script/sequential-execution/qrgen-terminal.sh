@@ -63,7 +63,7 @@ if [ -z "$4" ]
 then
     standard=""
 else
-    standard="standard"
+    standard="--standard"
 fi
 
 filename="$2"

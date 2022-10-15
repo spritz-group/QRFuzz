@@ -63,7 +63,7 @@ if [ -z "$4" ]
 then
     standard=""
 else
-    standard="standard"
+    standard="--standard"
 fi
 
 echosuc "[OK] 1 app loaded:"

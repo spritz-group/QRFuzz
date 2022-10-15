@@ -24,15 +24,18 @@ def main():
     
     opt = cmd()
     
-    app_index = opt.app
-    list_index = opt.list
+    app_index = opt.app # name of the app
+    list_index = opt.list # list of qr codes
+    standard_option = opt.standard # generate standard payload for qr codes with no customization
 
     if app_index is None: 
         print("[QRCodeGenerator] Please select an app with the argument -a")
         exit(1)
-    app_fun = app_names[app_index]
     
     print(app_index)
+
+    app_fun = app_names["standard"] if standard_option else app_names[app_index]
+
     if list_index is not None:
         dicts = [word_files[list_index]]
         name = word_file_names[list_index]
@@ -194,6 +197,12 @@ def cmd():
         "-sf",
         type=int,
         help="Start QR Code scan from the given position"
+    )
+    sgroup.add_argument(
+        "--standard",
+        "-st",
+        action='store_true',
+        help="Use standard QR builder with no customization"
     )
     opt = parser.parse_args()
     if len(sys.argv) == 1:

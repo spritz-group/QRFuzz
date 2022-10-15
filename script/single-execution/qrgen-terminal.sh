@@ -39,6 +39,7 @@ then
     echoerr "<arg1> a position {left, right, center} for the QR Visualizer Window"
     echoerr "<arg2> a name of the app to test"
     echoerr "[OPTIONAL] <arg3> a position number to start from (default: 0)"
+    echoerr "[OPTIONAL] <arg4> enable standard QR code generation (default: disabled)"
     exit 1
 fi
 
@@ -58,6 +59,13 @@ else
     start="$3"
 fi
 
+if [ -z "$4" ]
+then
+    standard=""
+else
+    standard="standard"
+fi
+
 echosuc "[OK] 1 app loaded:"
 echosuc "$2"
 
@@ -68,6 +76,7 @@ echolog "-- CONFIGURATION"
 echolog "Position of the window: $1"
 echolog "App loaded: $2"
 echolog "Starting QR from: $3"
+echolog "Extra parameters: $4"
 echolog "-- EXECUTION"
 
 i="$2"
@@ -89,7 +98,7 @@ else
 fi
 echolog "Python script START for $i"
 echo "[?] Starting python script..."
-python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start"
+python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start" "$standard"
 echosuc "----------- END $i -------------"
 echo "[?] Sleeping for 10s"
 echolog "Python script FINISH for $i"

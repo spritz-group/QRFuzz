@@ -39,6 +39,7 @@ then
     echoerr "<arg1> a position {left, right, center} for the QR Visualizer Window"
     echoerr "<arg2> a txt file path with list of apps in each line"
     echoerr "[OPTIONAL] <arg3> a position number to start from (default: 0)"
+    echoerr "[OPTIONAL] <arg4> enable standard QR code generation (default: disabled)"
     exit 1
 fi
 
@@ -58,6 +59,13 @@ else
     start="$3"
 fi
 
+if [ -z "$4" ]
+then
+    standard=""
+else
+    standard="standard"
+fi
+
 filename="$2"
 IFS=$'\n' read -d '' -r -a app < "$filename"
 
@@ -73,6 +81,7 @@ echolog "Position of the window: $1"
 echolog "Number of apps loaded: ${#app[@]}"
 echolog "List of apps loaded: ${app[*]}"
 echolog "Starting QR from: $3"
+echolog "Extra parameters: $4"
 echolog "-- EXECUTION"
 
 for i in "${app[@]}"
@@ -95,7 +104,7 @@ do
     fi
     echolog "Python script START for $i"
     echo "[?] Starting python script..."
-    python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start"
+    python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start" "$standard"
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 10s"
     echolog "Python script FINISH for $i"

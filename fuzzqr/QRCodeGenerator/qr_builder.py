@@ -3,6 +3,10 @@ class qrbuilder:
     # ------------------------------------------------------------------------
     # IT APPS
     # ------------------------------------------------------------------------
+    
+    def standard(payload: str): # This is for standard tests
+        return payload
+
     def wallpop(payload: str):
         return payload
 

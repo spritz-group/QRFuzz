@@ -42,6 +42,7 @@ app_names = {
     "ebay" : qrbuilder.ebay,
     "postepay" : qrbuilder.postepay,
     "bancoposta" : qrbuilder.bancoposta,
+    "broadlink" : qrbuilder.broadlink,
 }
 
 

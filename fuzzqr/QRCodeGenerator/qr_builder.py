@@ -66,4 +66,7 @@ class qrbuilder:
     def bancoposta(payload: str):
         return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
 
+    def broadlink(payload: str):
+        return payload
+
     

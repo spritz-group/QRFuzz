@@ -57,6 +57,8 @@ async function main () {
     console.log("[QRCodeFuzzer] Resuming QR codes from <"+start+"> of <" + n + ">")
   }
 
+  console.log("[QRCodeFuzzer] Scan page reached! " + start);
+
   // Perform QR Checking
   for (i=start; i<n; ++i){
     file = fuzzer.readFile(utils.fuzz_path()).file;
@@ -107,7 +109,7 @@ async function main () {
     try {
 
       // Go back
-      await driver.back();
+      // await driver.back();
     
       // +---------------------------------------------------------+
       // | BACK TO SCAN (if needed)                                |

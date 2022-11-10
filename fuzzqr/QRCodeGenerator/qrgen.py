@@ -21,6 +21,7 @@ fuzz_type = list(zip(range(len(word_file_names)), word_file_names))
 
 app_names = {
     # (string) : function_callback
+    "standard" : qrbuilder.standard,
     # ----------- IT
     "wallapop" : qrbuilder.wallpop,
     "tiktok" : qrbuilder.tiktok,
@@ -42,6 +43,7 @@ app_names = {
     "postepay" : qrbuilder.postepay,
     "bancoposta" : qrbuilder.bancoposta,
     "ucbrowser" : qrbuilder.ucbrowser,
+    "broadlink" : qrbuilder.broadlink,
 }
 
 

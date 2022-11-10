@@ -33,7 +33,7 @@ function saveLog(path, behavior="UNKNOWN") {
   line = Date() + "\t" 
     + behavior + "\t"
     + _fuzzer.file + "\t"
-    + _fuzzer.current + "/" + _fuzzer.size;
+    + _fuzzer.current + "/" + _fuzzer.size + "\n";
   fs.appendFile(path + "/" + _qrcodelogs_file, line, (err) => {
     console.warn("[QRCodeFuzzer] SAVE_LOG (logs) append error: " + err);
   });

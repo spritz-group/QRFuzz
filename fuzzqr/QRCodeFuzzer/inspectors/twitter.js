@@ -7,7 +7,7 @@ class Inspector {
     	let settings = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Show navigation drawer"]');
         await driver.elementClick(settings.ELEMENT);  
         
-        let qr = await driver.findElement("xpath", '//android.view.ViewGroup[@content-desc="QR code"]');
+        let qr = await driver.findElement("accessibility id", 'QR code');
         await driver.elementClick(qr.ELEMENT); 
 
         let scan = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Switch to QR Reader"]');

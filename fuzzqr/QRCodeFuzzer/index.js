@@ -86,8 +86,15 @@ async function main () {
     if (result_view && result_view.error == "no such element" ) {
       console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile(utils.fuzz_path()).file);
       fuzzer.log(utils.fuzz_path(), "ERROR_QR_UNREADABLE");
-      // Update QR
+      // Take screenshot
+      let image = await driver.takeScreenshot();
+
+      // Save screenshot to file
+      fuzzer.saveScreenshot(utils.fuzz_path(), image);
+
+      // Update QR    
       fuzzer.requestNewQR(utils.fuzz_path());
+
       continue;
     }
     
@@ -124,6 +131,10 @@ async function main () {
   }
 
   await driver.deleteSession();
+}
+
+function captureScreenshot() {
+  
 }
 
 main();

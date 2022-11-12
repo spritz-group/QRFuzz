@@ -44,6 +44,10 @@ app_names = {
     "bancoposta" : qrbuilder.bancoposta,
     "ucbrowser" : qrbuilder.ucbrowser,
     "broadlink" : qrbuilder.broadlink,
+    "facebook" : qrbuilder.facebook,
+    "verificac19" : qrbuilder.verificac19,
+    "chrome" : qrbuilder.chrome,
+    "messages" : qrbuilder.messages, 
 }
 
 

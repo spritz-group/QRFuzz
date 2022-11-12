@@ -72,3 +72,15 @@ class qrbuilder:
     def broadlink(payload: str):
         return payload
 
+    def chrome(payload: str):
+        return payload
+        
+    def facebook(payload: str):
+        return payload
+        
+    def messages(payload: str):
+        return "https://support.google.com/messages/?p=web_computer#?c=" + payload
+        
+    def verificac19(payload: str):
+        return payload
+

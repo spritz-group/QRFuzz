@@ -39,6 +39,7 @@ then
     echoerr "<arg2> the device id from <adb devices>"
     echoerr "<arg3> a name of the app to test"
     echoerr "[OPTIONAL] <arg4> a position number to start from (default: 0)"
+    echoerr "[OPTIONAL] <arg5> telegram command to send notification (default: disabled)"
     exit 1
 fi
 
@@ -50,6 +51,13 @@ then
     start=0
 else
     start="$4"
+fi
+
+if [ -z "$5" ]
+then
+    telegram=""
+else
+    telegram="$5"
 fi
 
 echosuc "[OK] ${#app[@]} apps loaded:"
@@ -84,11 +92,23 @@ else
     echosuc "[?] Folder $dir already exists"
 fi
 echolog "Node script START for $i"
+
+if [ -z "$telegram" ]
+then
+    $5 "Test START for $i"
+fi
+
 echo "[?] Starting node script..."
 node "$qrfuzzdir"/index.js "$i" "$dir" "$1" "$2" "$start"
 echosuc "----------- END $i -------------"
 echo "[?] Sleeping for 5s"
 echolog "Node script FINISH for $i"
 sleep 5
-
 echolog "Appium Terminal Script exited"
+
+if [ -z "$telegram" ]
+then
+    $5 "Test FINISH for $i"
+    log=$(cat log-appium-terminal-single-"$timestamp".txt)
+    $5 "$log"
+fi

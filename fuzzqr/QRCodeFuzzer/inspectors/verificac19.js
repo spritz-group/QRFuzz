@@ -1,7 +1,7 @@
 class Inspector {
-    app_name = "bancoposta";
-    app_package = "posteitaliane.posteapp.appbpol";
-    app_activity = "posteitaliane.posteapp.appbpol.ui.activity.SplashActivity";
+    app_name = "verificac19";
+    app_package = "it.ministerodellasalute.verificaC19";
+    app_activity = "it.ministerodellasalute.verificaC19.ui.SplashScreenActivity";
 
     // Note: only the first QR gives a different error (that is QR not recognized because does not start with the URL required).
 

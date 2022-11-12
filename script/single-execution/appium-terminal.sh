@@ -93,9 +93,9 @@ else
 fi
 echolog "Node script START for $i"
 
-if [ -z "$telegram" ]
+if [ -n "$telegram" ]
 then
-    $5 "Test START for $i"
+    $telegram "Test START for $i"
 fi
 
 echo "[?] Starting node script..."
@@ -106,9 +106,9 @@ echolog "Node script FINISH for $i"
 sleep 5
 echolog "Appium Terminal Script exited"
 
-if [ -z "$telegram" ]
+if [ -n "$telegram" ]
 then
-    $5 "Test FINISH for $i"
+    $telegram "Test FINISH for $i"
     log=$(cat log-appium-terminal-single-"$timestamp".txt)
-    $5 "$log"
+    $telegram "$log"
 fi

@@ -48,6 +48,7 @@ app_names = {
     "verificac19" : qrbuilder.verificac19,
     "chrome" : qrbuilder.chrome,
     "messages" : qrbuilder.messages, 
+    "instagram260" : qrbuilder.instagram260,
 }
 
 

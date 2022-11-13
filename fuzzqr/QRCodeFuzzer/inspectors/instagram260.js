@@ -23,6 +23,8 @@ class Inspector {
     }
     
     async goBackToScan(driver) {
+        let cancel = await driver.findElement("id", "com.instagram.android:id/auxiliary_button");
+        await driver.elementClick(cancel.ELEMENT);
         
     }
 

@@ -104,7 +104,16 @@ do
     fi
     echolog "Python script START for $i"
     echo "[?] Starting python script..."
-    python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start" "$standard"
+
+    if [ $standard ]
+    then
+        echo "[?] STANDARD QR Codes"
+        python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start" --standard
+    else
+        echo "[?] AD-HOC QR Codes"
+        python "$qrgendir"/main.py -a "$i" -j "$dir" -p "$1" -sf "$start"
+    fi
+    
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 10s"
     echolog "Python script FINISH for $i"

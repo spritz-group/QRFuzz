@@ -71,6 +71,8 @@ echolog "-- CONFIGURATION"
 echolog "Port number for appium server: $1"
 echolog "Device ID: $2"
 echolog "App loaded: $3"
+echolog "Start from: $start"
+echolog "Telegram command: $telegram"
 echolog "-- EXECUTION"
 
 

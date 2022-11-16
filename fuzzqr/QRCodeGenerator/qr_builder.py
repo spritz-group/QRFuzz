@@ -34,6 +34,10 @@ class qrbuilder:
     def shein(payload: str):
         return "https://shein.onelink.me/" + payload + "?af_force_deeplink=true"
 
+    def ridemovi(payload: str):
+        # example of correct payload: http://ridemovi.com/?bn=IB12A00232&p=1
+        return "http://ridemovi.com/?bn=" + payload + "&p=1"
+
     # ------------------------------------------------------------------------
     # US APPS
     # ------------------------------------------------------------------------

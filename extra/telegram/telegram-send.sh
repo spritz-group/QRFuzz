@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# Source: https://hackernoon.com/how-to-create-a-simple-bash-shell-script-to-send-messages-on-telegram-lcz31bx
-    
+# Source: 
+# https://hackernoon.com/how-to-create-a-simple-bash-shell-script-to-send-messages-on-telegram-lcz31bx
+
+# Usage: 
+# Put this file in /usr/bin/telegram-send and change ownership to root
+# Invoke this script from the bash using `telegram-send` 
+
+
 GROUP_ID=#CHANGEHERE
 BOT_TOKEN=#CHANGEHERE
 
-# this 3 checks (if) are not necessary but should be convenient
 if [ "$1" == "-h" ]; then
   echo "Usage: `basename $0` \"text message\""
   exit 0

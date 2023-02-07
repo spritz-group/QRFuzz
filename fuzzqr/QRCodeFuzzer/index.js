@@ -64,6 +64,8 @@ async function main () {
     file = fuzzer.readFile(utils.fuzz_path()).file;
     console.log("> QR code under analysis: " + file);
 
+    // TODO: [Add driver.queryAppState('io.appium.android.apis')]
+
     // +---------------------------------------------------------+
     // | RESULT VIEW                                             |
     // +---------------------------------------------------------+
@@ -131,10 +133,6 @@ async function main () {
   }
 
   await driver.deleteSession();
-}
-
-function captureScreenshot() {
-  
 }
 
 main();

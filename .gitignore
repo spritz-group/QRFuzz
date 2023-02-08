@@ -1,3 +1,4 @@
 **/node_modules
 **/data-tests/**
 **/log-qrgen**
+script/single-execution/log*.txt

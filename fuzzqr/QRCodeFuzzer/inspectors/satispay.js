@@ -12,8 +12,8 @@ class Inspector {
     }
     
     async goBackToScan(driver) {
-    	// let ok = await driver.findElement("id", 'android:id/button1');
-        // await driver.elementClick(ok.ELEMENT);
+    	let ok = await driver.findElement("id", 'android:id/button1');
+        await driver.elementClick(ok.ELEMENT);
     }
 
 }

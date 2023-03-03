@@ -43,7 +43,7 @@ class qrbuilder:
     # ------------------------------------------------------------------------
 
     def instagram(payload: str):
-        return "http://instagram.com/" + payload + "?utm_source=qr"
+        return payload # "http://instagram.com/" + payload + "?utm_source=qr"
 
     def instagram260(payload: str):
         return "http://instagram.com/" + payload + "?utm_source=qr"

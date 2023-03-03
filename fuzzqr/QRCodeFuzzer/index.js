@@ -98,6 +98,7 @@ async function goToAppScanPage(driver) {
   try {
     await appIns.goToScan(driver);
   } catch (error) {
+    beep();
     console.log("[QRCodeFuzzer] Unable to go to the scan page (error: " + error + ")");
     console.log("[QRCodeFuzzer] Please place the App manually in the scan page; then press any key to continue...");
     await keypress();
@@ -147,6 +148,14 @@ async function saveScreenshot(driver) {
 
   // Await for the script before continuing
   await new Promise(r => setTimeout(r, 300));
+}
+
+function beep() {
+  exec('notify-send "Do something!"', 
+    function (error, stdOut, stdErr) {
+      console.log("\nBEEP " + error + "\n");
+    }
+  );
 }
 
 main();

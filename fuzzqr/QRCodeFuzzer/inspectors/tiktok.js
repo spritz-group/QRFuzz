@@ -5,11 +5,11 @@ class Inspector {
 
     async goToScan(driver) {
         // Click "Profile"
-        let btn_profile = await driver.findElement("id", "com.zhiliaoapp.musically:id/cn0");
+        let btn_profile = await driver.findElement("id", "com.zhiliaoapp.musically:id/ejf");
         await driver.elementClick(btn_profile.ELEMENT);
         
         // Click "menu"
-        let btn_menu = await driver.findElement("id", "com.zhiliaoapp.musically:id/nav_end");
+        let btn_menu = await driver.findElement("id", "com.zhiliaoapp.musically:id/ewx");
         await driver.elementClick(btn_menu.ELEMENT);
         
         // Click "settings"
@@ -23,8 +23,8 @@ class Inspector {
         // await driver.elementClick(btn_qr.ELEMENT);
         
         // // Click "Scan"
-        // let btn_scan = await driver.findElement("id", "com.zhiliaoapp.musically:id/di5");
-        // await driver.elementClick(btn_scan.ELEMENT);
+        let btn_scan = await driver.findElement("id", "com.zhiliaoapp.musically:id/g6r");
+        await driver.elementClick(btn_scan.ELEMENT);
     }
 
     async getResultView(driver) {
@@ -32,7 +32,9 @@ class Inspector {
     }
 
     async goBackToScan(driver) {
-        let btn_scan = await driver.findElement("id", "com.zhiliaoapp.musically:id/di5");
+        let btn_back = await driver.findElement("id", "com.zhiliaoapp.musically:id/dh4");
+        await driver.elementClick(btn_back.ELEMENT);
+        let btn_scan = await driver.findElement("id", "com.zhiliaoapp.musically:id/g6r");
         await driver.elementClick(btn_scan.ELEMENT);
     }
 }

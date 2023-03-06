@@ -83,7 +83,7 @@ class qrbuilder:
         return payload
         
     def facebook(payload: str):
-        return payload
+        return "https://facebook.com/qr?id=" + payload
         
     def messages(payload: str):
         return "https://support.google.com/messages/?p=web_computer#?c=" + payload

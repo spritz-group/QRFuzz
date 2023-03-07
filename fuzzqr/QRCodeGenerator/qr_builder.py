@@ -62,16 +62,16 @@ class qrbuilder:
         return "https://twitter.com/" + payload
     
     def discord(payload: str):
-        return "https://discord.gg/" + payload
+        return payload # "https://discord.gg/" + payload
     
     def ebay(payload: str):
         return "https://ebay.com/str/" + payload
     
     def postepay(payload: str):
-        return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
+        return payload # "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
     
     def bancoposta(payload: str):
-        return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
+        return payload # "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
 
     def ucbrowser(payload: str):
         return payload

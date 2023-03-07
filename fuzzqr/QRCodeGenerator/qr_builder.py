@@ -91,3 +91,5 @@ class qrbuilder:
     def verificac19(payload: str):
         return payload
 
+    def line(payload: str):
+        return  payload # "https://line.me/R/ti/g/"+payload

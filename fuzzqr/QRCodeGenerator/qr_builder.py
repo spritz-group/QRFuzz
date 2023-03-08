@@ -17,7 +17,7 @@ class qrbuilder:
         return "https://www.satispay.com/app/pay/shops/" + payload + "?amount=1"
 
     def tiktok(payload: str):
-        return "https://vm.tiktok.com/" + payload
+        return payload # "https://vm.tiktok.com/" + payload
 
     def telegram(payload: str):
         return "tg://login?token=" + payload

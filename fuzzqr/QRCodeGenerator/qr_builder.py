@@ -59,10 +59,10 @@ class qrbuilder:
         return "https://www.paypal.com/qrcodes/managed/" + payload + "?utm_source=consweb_more"
 
     def twitter(payload: str):
-        return "https://twitter.com/" + payload
+        return payload # "https://twitter.com/" + payload
     
     def discord(payload: str):
-        return payload # "https://discord.gg/" + payload
+        return "https://discord.gg/" + payload
     
     def ebay(payload: str):
         return "https://ebay.com/str/" + payload

@@ -56,9 +56,6 @@ async function main() {
       
       await saveLogcat(driver);
       await saveScreenshot(driver);
-      // ***************************** TEMP FIX FOR FACEBOOK
-      await appIns.goBackToScan(driver);
-      // *****************************
       continue;
     }
 

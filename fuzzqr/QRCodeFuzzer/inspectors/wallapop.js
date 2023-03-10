@@ -27,7 +27,10 @@ class Inspector {
     }
 
     async goBackToScan(driver) {
-        await new Promise(r => setTimeout(r, 100));
+        let back = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Navigate up"]');
+        await driver.elementClick(back.ELEMENT);
+        
+        // await new Promise(r => setTimeout(r, 100));
     }
 
 }

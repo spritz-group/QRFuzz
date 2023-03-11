@@ -14,7 +14,8 @@ class qrbuilder:
         return "https://secureholder.mobile.poste.it/jod-secure-holder/qrcodeResolver/" + payload
     
     def satispay(payload: str):
-        return "https://www.satispay.com/app/pay/shops/" + payload + "?amount=1"
+        # return "https://www.satispay.com/app/pay/shops/" + payload + "?amount=1"
+        return payload
 
     def tiktok(payload: str):
         return payload # "https://vm.tiktok.com/" + payload

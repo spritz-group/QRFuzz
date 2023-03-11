@@ -2,3 +2,4 @@
 **/data-tests/**
 **/log-qrgen**
 script/fuzzqr-single/log*
+script/single-execution/log*.txt

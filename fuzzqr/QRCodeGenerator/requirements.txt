@@ -4,7 +4,6 @@ argparse
 base45
 flynn
 cose
-PyPDF2 
+PyPDF2
 pyzbar
 pypng
-qrcode

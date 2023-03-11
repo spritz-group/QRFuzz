@@ -1,8 +1,8 @@
 
 class qrbuilder:
-    # ------------------------------------------------------------------------
-    # IT APPS
-    # ------------------------------------------------------------------------
+    """ QR Builder Class 
+        Each method implements a different payload to build that must be returned as a string
+    """
     
     def standard(payload: str): # This is for standard tests
         return payload
@@ -38,10 +38,6 @@ class qrbuilder:
     def ridemovi(payload: str):
         # example of correct payload: http://ridemovi.com/?bn=IB12A00232&p=1
         return "http://ridemovi.com/?bn=" + payload + "&p=1"
-
-    # ------------------------------------------------------------------------
-    # US APPS
-    # ------------------------------------------------------------------------
 
     def instagram(payload: str):
         return payload # "http://instagram.com/" + payload + "?utm_source=qr"

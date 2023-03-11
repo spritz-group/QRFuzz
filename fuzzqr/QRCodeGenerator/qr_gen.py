@@ -1,28 +1,15 @@
-#
-# QrGen
-# --------------------
-
 import os
-from typing import List
 import qrcode
 import subprocess
-from qr_builder import *
+from typing import List
+from qr_builder import qrbuilder
 
-# TODO: code-refactoring: remove lists and fuzz-type; we are going to have just one file for everything
-
-# Get files from `words` folder
-word_file_names = [f.split(".txt")[0] for f in os.listdir("words")]
-word_files = [f"words/{f}.txt" for f in word_file_names]
-
-fuzz_type = list(zip(range(len(word_file_names)), word_file_names))
-
-
-# TODO: add enum of top apps from excel
-
+# Application available
+# NOTE: to extend the program, add here a app with the corresponding callback
 app_names = {
+    # Pattern 
     # (string) : function_callback
     "standard" : qrbuilder.standard,
-    # ----------- IT
     "wallapop" : qrbuilder.wallpop,
     "tiktok" : qrbuilder.tiktok,
     "satispay" : qrbuilder.satispay,
@@ -32,7 +19,6 @@ app_names = {
     "qrbarcodereader" : qrbuilder.qrbarcodereader,
     "io" : qrbuilder.io,
     "shein" : qrbuilder.shein,
-    # ----------- US
     "instagram" : qrbuilder.instagram,
     "whatsapp" : qrbuilder.whatsapp,
     "snapchat" : qrbuilder.snapchat,
@@ -52,7 +38,12 @@ app_names = {
     "line" : qrbuilder.line,
 }
 
+# Load dictionaries from local "words" folder
+word_file_names = [f.split(".txt")[0] for f in os.listdir("words")]
+word_files = [f"words/{f}.txt" for f in word_file_names]
+fuzz_type = list(zip(range(len(word_file_names)), word_file_names))
 
+# Create directories where needed
 def make_dirs():
     try:
         subprocess.check_output(["mkdir", "genqr"], stderr=subprocess.STDOUT)
@@ -65,7 +56,7 @@ def make_dirs():
     except:
         pass
 
-
+# Get single words inside each file
 def get_words(opt):
     if opt.list != None:
         payloads = open(word_files[opt.list]).readlines()
@@ -74,8 +65,8 @@ def get_words(opt):
     payloads = [w.strip() for w in payloads]
     return payloads
 
-
-def print_qrs(payload, t, i):
+# Additional function: generate QR Codes files
+def generate_qr_codes(payload, t, i):
     img = qrcode.make(payload)
     img.save(f"genqr/{t}-{i}.png")
     print(f"Generated {i} payloads!")

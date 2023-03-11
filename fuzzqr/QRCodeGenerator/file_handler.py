@@ -1,12 +1,13 @@
 import json
 import os
 
+global qr_files
+global payloads
 qr_files = []
 payloads = []
 
-# ---------------- FILE HANDLER ----------------
-
 class FileHandler():
+    """ File Handler class to handle the file changes of QRCodeFuzzer """
     def __init__(self, json_path = "../QRCodeFuzzer/data-tests"):
         self.fuzzer = []
         self.iterator = 0

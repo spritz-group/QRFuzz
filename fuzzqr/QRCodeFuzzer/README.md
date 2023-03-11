@@ -26,9 +26,10 @@ The QR Code Fuzzer includes an Appium Client that interacts with an Appium Serve
 
 ### Inspector example
 
-The file name is used to invoke the inspector: `node main.js <inspector_name> [options]`.
+This is an example on how to add new applications.
 
 ```js
+// [Add file] inspectors/myapplication.js
 class Inspector {
     app_name = "myapp";
     app_package = "com.glados.myapp";
@@ -46,4 +47,11 @@ class Inspector {
 }
 
 exports.Inspector = Inspector;
+```
+
+The file name is used to invoke the inspector.
+
+```sh
+# Type in a terminal
+node main.js myapplication
 ```

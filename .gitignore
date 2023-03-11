@@ -130,7 +130,6 @@ dmypy.json
 .vscode/settings.json
 
 # Extra
-*.png
 *.zip
 
 **/QRCodeFuzzer/data*/logs/*.txt

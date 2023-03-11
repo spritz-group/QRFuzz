@@ -1,7 +1,6 @@
-## Fake Green Pass Generator
+# QR Code Generator
 
-This program aims to generate or visualize QR codes with malicious payloads. 
-The payloads are generated from dictionaries inside the `words/` folder of this project.
+This program generates and shows QR codes with malicious payloads. 
 
 ## Usage
 

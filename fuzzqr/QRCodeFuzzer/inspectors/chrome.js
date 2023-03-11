@@ -11,20 +11,25 @@ class Inspector {
         let lens = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/googleapp_lens_icon');
         await driver.elementClick(lens.ELEMENT);   
 
-        let scan = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/lens_camera_cutout_image');
-        await driver.elementClick(scan.ELEMENT);       
+        // let scan = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/lens_camera_cutout_image');
+        // await driver.elementClick(scan.ELEMENT);       
     }
 
     async getResultView(driver) {
-        return await driver.findElement("id", "com.google.android.googlequicksearchbox:id/googleapp_lens_icon");
+        await new Promise(r => setTimeout(r, 200));
+        //return await driver.findElement("id", "com.google.android.googlequicksearchbox:id/googleapp_lens_icon");
     }
     
     async goBackToScan(driver) {  
-        let lens = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/googleapp_lens_icon');
-        await driver.elementClick(lens.ELEMENT);   
 
-        let scan = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/lens_camera_cutout_image');
-        await driver.elementClick(scan.ELEMENT);     
+        await driver.back();  
+
+        let lens = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/googleapp_lens_icon');
+        await driver.elementClick(lens.ELEMENT); 
+        
+
+        // let scan = await driver.findElement("id", 'com.google.android.googlequicksearchbox:id/lens_camera_cutout_image');
+        // await driver.elementClick(scan.ELEMENT);     
     }
 
 }

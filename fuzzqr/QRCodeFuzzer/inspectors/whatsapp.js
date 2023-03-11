@@ -18,7 +18,8 @@ class Inspector {
     }
 
     async getResultView(driver) {
-        return await driver.findElement("id", "com.whatsapp:id/alertTitle"); // FIXME: Not showing error message!
+        return await new Promise(r => setTimeout(r, 200));
+        // return await driver.findElement("id", "com.whatsapp:id/alertTitle"); // FIXME: Not showing error message!
     }
     
     async goBackToScan(driver) {}

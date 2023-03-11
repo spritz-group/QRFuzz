@@ -1,31 +1,28 @@
 class Inspector {
     app_name = "discord";
     app_package = "com.discord";
-    app_activity = "com.discord.app.AppActivity$Main";
+    app_activity = "com.discord.main.MainActivity";
 
     async goToScan(driver) {
-    	let tab = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Attiva/disattiva drawer"]');
+    	let tab = await driver.findElement("xpath", '//android.view.View[@content-desc="Settings, cnsqrfuzzer, "]');
         await driver.elementClick(tab.ELEMENT);  
 
-    	let settings = await driver.findElement("id", 'com.discord:id/tabs_host_bottom_nav_user_settings_item');
-        await driver.elementClick(settings.ELEMENT);  
-
-        let qr = await driver.findElement("id", 'com.discord:id/qr_scanner');
-        await driver.elementClick(qr.ELEMENT); 
+    	let qr = await driver.findElement("xpath", '//android.widget.AbsListView[@content-desc="User Settings"]/android.widget.Button[9]');
+        await driver.elementClick(qr.ELEMENT);  
     }
 
     async getResultView(driver) {
-        return await driver.findElement("id", 'com.discord:id/privacy');    
+        // return await driver.findElement("xpath","/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.Button"); 
+        
+    	return await driver.findElement("xpath", '//android.widget.AbsListView[@content-desc="User Settings"]/android.widget.Button[9]');
     }
     
     async goBackToScan(driver) {
-    	// let settings = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Attiva/disattiva drawer"]');
-        // await driver.elementClick(settings.ELEMENT);  
-    	let settings = await driver.findElement("id", 'com.discord:id/tabs_host_bottom_nav_user_settings_item');
-        await driver.elementClick(settings.ELEMENT);  
+        // let ok = await driver.findElement("xpath","/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.Button");
+        // await driver.elementClick(ok.ELEMENT);
 
-        let qr = await driver.findElement("id", 'com.discord:id/qr_scanner');
-        await driver.elementClick(qr.ELEMENT);   
+    	let qr = await driver.findElement("xpath", '//android.widget.AbsListView[@content-desc="User Settings"]/android.widget.Button[9]');
+        await driver.elementClick(qr.ELEMENT);  
     }
 
 }

@@ -49,6 +49,7 @@ app_names = {
     "chrome" : qrbuilder.chrome,
     "messages" : qrbuilder.messages, 
     "instagram260" : qrbuilder.instagram260,
+    "line" : qrbuilder.line,
 }
 
 

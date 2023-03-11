@@ -9,7 +9,9 @@ class Inspector {
         return await driver.findElement("id", "com.teacapps.barcodescanner:id/list");
     }
     
-    async goBackToScan(driver) {}
+    async goBackToScan(driver) {
+        driver.back();
+    }
 
 }
 

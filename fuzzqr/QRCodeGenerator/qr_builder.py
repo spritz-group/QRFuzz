@@ -18,7 +18,7 @@ class qrbuilder:
         return payload
 
     def tiktok(payload: str):
-        return "https://vm.tiktok.com/" + payload
+        return payload # "https://vm.tiktok.com/" + payload
 
     def telegram(payload: str):
         return "tg://login?token=" + payload
@@ -44,7 +44,7 @@ class qrbuilder:
     # ------------------------------------------------------------------------
 
     def instagram(payload: str):
-        return "http://instagram.com/" + payload + "?utm_source=qr"
+        return payload # "http://instagram.com/" + payload + "?utm_source=qr"
 
     def instagram260(payload: str):
         return "http://instagram.com/" + payload + "?utm_source=qr"
@@ -60,7 +60,7 @@ class qrbuilder:
         return "https://www.paypal.com/qrcodes/managed/" + payload + "?utm_source=consweb_more"
 
     def twitter(payload: str):
-        return "https://twitter.com/" + payload
+        return payload # "https://twitter.com/" + payload
     
     def discord(payload: str):
         return "https://discord.gg/" + payload
@@ -69,10 +69,10 @@ class qrbuilder:
         return "https://ebay.com/str/" + payload
     
     def postepay(payload: str):
-        return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
+        return payload # "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
     
     def bancoposta(payload: str):
-        return "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
+        return payload # "https://ppayapp.mobile.poste.it/jod-mobile-server/qrcs/bp/access/v1/?clusterID=1&tranId=" + payload
 
     def ucbrowser(payload: str):
         return payload
@@ -84,7 +84,7 @@ class qrbuilder:
         return payload
         
     def facebook(payload: str):
-        return payload
+        return "https://facebook.com/qr?id=" + payload
         
     def messages(payload: str):
         return "https://support.google.com/messages/?p=web_computer#?c=" + payload
@@ -92,3 +92,5 @@ class qrbuilder:
     def verificac19(payload: str):
         return payload
 
+    def line(payload: str):
+        return  payload # "https://line.me/R/ti/g/"+payload

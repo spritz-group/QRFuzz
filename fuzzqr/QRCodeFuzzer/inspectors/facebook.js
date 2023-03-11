@@ -26,9 +26,12 @@ class Inspector {
         return await driver.findElement("xpath", "/hierarchy/android.widget.Toast[1]");
     }
     
-    async goBackToScan(driver) {
-        // let scan = await driver.findElement("id", 'posteitaliane.posteapp.appbpol:id/access_qr');
-        // await driver.elementClick(scan.ELEMENT);       
+    async goBackToScan(driver) {    
+        let back = await driver.findElement("xpath", '//android.widget.ImageView[@content-desc="Back"]');
+        await driver.elementClick(back.ELEMENT); 
+
+        let qr2 = await driver.findElement("xpath", '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]');
+        await driver.elementClick(qr2.ELEMENT); 
     }
 
 }

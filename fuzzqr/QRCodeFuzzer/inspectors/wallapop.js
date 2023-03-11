@@ -7,19 +7,19 @@ class Inspector {
 
         // 2022-07-12: app crash when gets to result view
 
-        // // Click "Profile"
-        // let btn_profile = await driver.findElement("id", "com.wallapop:id/profile");
-        // await driver.elementClick(btn_profile.ELEMENT);
+        // Click "Profile"
+        let btn_profile = await driver.findElement("id", "com.wallapop:id/profile");
+        await driver.elementClick(btn_profile.ELEMENT);
         
-        // // Click "Wallet"
-        // let btn_wallet = await driver.findElement("id", "com.wallapop:id/wallet_amount");
-        // await driver.elementClick(btn_wallet.ELEMENT);
+        // Click "Wallet"
+        let btn_wallet = await driver.findElement("id", "com.wallapop:id/wallet_amount");
+        await driver.elementClick(btn_wallet.ELEMENT);
         
         await new Promise(r => setTimeout(r, 5000));
 
-        // // Click "Scan"
-        // let btn_receive_money = await driver.findElement("id", "com.wallapop:id/receiveMoneyButton");
-        // await driver.elementClick(btn_receive_money.ELEMENT);
+        // Click "Scan"
+        let btn_receive_money = await driver.findElement("id", "com.wallapop:id/receiveMoneyButton");
+        await driver.elementClick(btn_receive_money.ELEMENT);
     }
 
     async getResultView(driver) {
@@ -27,7 +27,10 @@ class Inspector {
     }
 
     async goBackToScan(driver) {
-        await new Promise(r => setTimeout(r, 100));
+        let back = await driver.findElement("xpath", '//android.widget.ImageButton[@content-desc="Navigate up"]');
+        await driver.elementClick(back.ELEMENT);
+        
+        // await new Promise(r => setTimeout(r, 100));
     }
 
 }

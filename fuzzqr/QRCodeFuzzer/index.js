@@ -1,15 +1,15 @@
 const wdio = require("webdriverio");
-var utils = require('./spaghetti.js');
+var loader = require('./loader.js');
 var fuzzer = require('./fuzzer.js');
 const fs = require('fs');
 var exec = require('child_process').exec; // used to find app pid for logs
-utils.checkArguments();
-let app = utils.getAppInspector();
+loader.checkArguments();
+let app = loader.getAppInspector();
 let appIns = new app.Inspector();
 
 const opts = {
   path: '/wd/hub',
-  port: utils.fuzz_port(), // 4723,
+  port: loader.fuzz_port(), // 4723,
   capabilities: {
     "platformName": "Android",
     "appPackage": appIns.app_package,
@@ -19,6 +19,7 @@ const opts = {
   }
 };
 
+// Handler to detect CTRL+C to exit the program
 const keypress = async () => {
   process.stdin.setRawMode(true)
   return new Promise(resolve => process.stdin.once('data', data => {
@@ -32,8 +33,12 @@ const keypress = async () => {
   }))
 }
 
+
+// Main loop
+// Curious developer, start from here :)
+
 async function main() {
-  let driver = await startDriver();
+  let driver = await startDriver(loader.wdio_timeout());
 
   await goToAppScanPage(driver);
 
@@ -41,18 +46,18 @@ async function main() {
 
   // Perform QR Checking
   for (i = start; i < n; ++i) {
-    file = fuzzer.readFile(utils.fuzz_path()).file;
+    file = fuzzer.readFile(loader.fuzz_path()).file;
     console.log("> QR code under analysis: " + file);
 
-    driver = await checkAppRunningAndRestart(driver);
+    driver = await checkAppRunningAndRestart(driver, loader.wdio_timeout());
 
     // Hook to result view
     let result_view = await appIns.getResultView(driver);
 
     // Result view error check
     if (result_view && result_view.error == "no such element") {
-      console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile(utils.fuzz_path()).file);
-      fuzzer.log(utils.fuzz_path(), "ERROR_QR_UNREADABLE");
+      console.log("[QRCodeFuzzer] Unable to read QR Code: " + fuzzer.readFile(loader.fuzz_path()).file);
+      fuzzer.log(loader.fuzz_path(), "ERROR_QR_UNREADABLE");
       
       await saveLogcat(driver);
       await saveScreenshot(driver);
@@ -68,7 +73,7 @@ async function main() {
     try {
       await appIns.goBackToScan(driver);
     } catch (error) {
-      driver = await startDriver();
+      driver = await startDriver(10000);
       await goToAppScanPage(driver);
     }
   }
@@ -76,10 +81,12 @@ async function main() {
   await driver.deleteSession();
 }
 
+
+// Get the JSON parameters of fuzzer.json
 function getJsonParams() {
   let file = "start";
-  var n = fuzzer.size(utils.fuzz_path());
-  var start = utils.fuzz_start();
+  var n = fuzzer.size(loader.fuzz_path());
+  var start = loader.fuzz_start();
   if (start > 0) {
     console.log("[QRCodeFuzzer] Resuming QR codes from <" + start + "> of <" + n + ">")
   }
@@ -87,10 +94,12 @@ function getJsonParams() {
   return { start, n, file };
 }
 
-async function startDriver() {
+
+// Start and set the config for the WebdriverIO
+async function startDriver(timeout=10000) {
   let driver = await wdio.remote(opts);
   // Wait before crashing if not finding an element
-  await driver.setTimeout({ 'implicit': 10000 });
+  await driver.setTimeout({ 'implicit': timeout });
   return driver;
 }
 
@@ -98,19 +107,18 @@ async function goToAppScanPage(driver) {
   try {
     await appIns.goToScan(driver);
   } catch (error) {
-    beep();
     console.log("[QRCodeFuzzer] Unable to go to the scan page (error: " + error + ")");
     console.log("[QRCodeFuzzer] Please place the App manually in the scan page; then press any key to continue...");
     await keypress();
   }
 }
 
-async function checkAppRunningAndRestart(driver) {
+async function checkAppRunningAndRestart(driver, timeout=10000) {
   let appState = await driver.queryAppState(appIns.app_package);
 
   if (appState != 4) { // 4= running in foreground
     console.log("[QRCodeFuzzer] Process unexpectedly closed. Trying to restore...");
-    driver = await startDriver();
+    driver = await startDriver(timeout);
     await goToAppScanPage(driver);
   }
   return driver;
@@ -134,7 +142,7 @@ async function saveLogcat(driver) {
         .map(entry => entry.message).join('\n');
     }
 
-    fs.writeFile(utils.fuzz_path() + "/logs/" + fuzzer.readFile(utils.fuzz_path()).file + ".txt", logcat, (err) => {
+    fs.writeFile(loader.fuzz_path() + "/logs/" + fuzzer.readFile(loader.fuzz_path()).file + ".txt", logcat, (err) => {
       console.log("[QRCodeFuzzer] " + err);
     });
   });
@@ -142,20 +150,12 @@ async function saveLogcat(driver) {
 
 async function saveScreenshot(driver) {
   let image = await driver.takeScreenshot();
-  fuzzer.saveScreenshot(utils.fuzz_path(), image);
-  fuzzer.log(utils.fuzz_path(), "OK");
-  fuzzer.requestNewQR(utils.fuzz_path());
+  fuzzer.saveScreenshot(loader.fuzz_path(), image);
+  fuzzer.log(loader.fuzz_path(), "OK");
+  fuzzer.requestNewQR(loader.fuzz_path());
 
   // Await for the script before continuing
   await new Promise(r => setTimeout(r, 300));
-}
-
-function beep() {
-  exec('notify-send "Do something!"', 
-    function (error, stdOut, stdErr) {
-      console.log("\nBEEP " + error + "\n");
-    }
-  );
 }
 
 main();

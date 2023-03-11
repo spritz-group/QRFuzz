@@ -1,10 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 
+// Default variables
 let port = 4723;
 let dpath = "./data-tests";
 let device = "TestDevice";
 let dstart = 0;
+let dtimeout = 10000; // 10 seconds
+let ifiles = [];
+
+// Main argument checker function
 
 function checkArguments() {
 
@@ -62,10 +67,9 @@ function checkArguments() {
 
 }
 
-// This function, which is an elegant spaghetti code, checks and include the correct
-// app inspector depending on the parameter passed in the function
+// This function includes the correct app inspector 
+// depending on the parameter passed in the function
 
-let ifiles = [];
 function getAppInspector() {
 
     let arg = process.argv[2];
@@ -89,6 +93,7 @@ let getPath = () => dpath;
 let getPort = () => port;
 let getDevice = () => device;
 let getStartFrom = () => dstart;
+let getDriverTimeout = () => dtimeout;
 
 exports.getAppInspector = getAppInspector;
 exports.checkArguments = checkArguments;
@@ -96,3 +101,4 @@ exports.fuzz_path = getPath;
 exports.fuzz_port = getPort;
 exports.fuzz_device = getDevice;
 exports.fuzz_start = getStartFrom;
+exports.wdio_timeout = getDriverTimeout;

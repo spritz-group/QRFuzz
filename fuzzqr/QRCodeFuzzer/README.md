@@ -1,18 +1,49 @@
-## Appium Client - QR Code Fuzzer
+# QR Code Fuzzer
 
-![FuzzQR banner](https://user-images.githubusercontent.com/34033090/152697122-2000350a-edfa-4129-b70a-15025e45162e.png)
+The QR Code Fuzzer includes an Appium Client that interacts with an Appium Server.
 
-Using this component it is possible to connect to an Appium Server with a running instance of a smartphone and perform commands, as well as actions, driven by the client. For simplicity, we suggest to use an Android device. If you plan to use an iOS device with an iOS app we suggest to read the documentation to make Appium working correctly ([Appium iOS documentation](http://appium.io/docs/en/drivers/ios-uiautomation/)).
+## Usage
 
-This project is an improvement of [maxelweb/fuzzqr](https://github.com/maxelweb/fuzzqr) toolkit to automate the process on different kind of apps.
-
-> Here in the `/data-tests` folder will be collected screenshots and logs obtained from the client.
+1. `npm install` to install the NodeJS dependencies
+2. `node main.js <inspector_name> [options]`
 
 ### Requirements
 
 - Smartphone with Android
-- Android SDK installed (with `ANDROID_HOME` and `JAVA_HOME` environment paths correctly set)
-- NodeJS with `npm` (version 6.x+)
-- Appium Server (possibly the executable, otherwise install it with `npm`)
-- (optional) Appium Inspector (same, can be useful to generate macro sequence of actions)
 - Windows, Linux and Mac OS are supported
+- NodeJS with `npm` (version 6.x+)
+- Android SDK installed
+    - `ANDROID_HOME` and `JAVA_HOME` environment paths are required
+- Appium Server app
+- (optional) Appium Inspector 
+    - Use this to generate macro sequence of actions to use in the webdriver.io interactions
+
+## Structure
+
+- `data-tests/`: collection of screenshots and logs during tests
+- `inspectors/`: inspector class to execute a set of predefined actions inside an app
+    - Here it is possible to add new inspectors to test a new application
+
+### Inspector example
+
+The file name is used to invoke the inspector: `node main.js <inspector_name> [options]`.
+
+```js
+class Inspector {
+    app_name = "myapp";
+    app_package = "com.glados.myapp";
+    app_activity = "com.glados.myapp.activities.MainActivity";
+
+    async goToScan(driver) {
+        // Code to go to the QR Code scan page
+    }
+    async getResultView(driver) {
+        // Code to check which element should show up after a QR Code scan
+    }
+    async goBackToScan(driver) {
+        // Code for going back to the scan page after a QR Code scan
+    }
+}
+
+exports.Inspector = Inspector;
+```

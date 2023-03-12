@@ -7,7 +7,7 @@ APP=$1
 
 while [ TRUE ]
 do
-	RES=$(adb shell pidof $APP)
+	RES=$(adb shell pidof "$APP")
 	if [ "$RES" ]
 	then
 		echo "$1 is running as PID $RES..."

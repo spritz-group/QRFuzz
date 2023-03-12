@@ -12,7 +12,7 @@ GROUP_ID=#CHANGEHERE
 BOT_TOKEN=#CHANGEHERE
 
 if [ "$1" == "-h" ]; then
-  echo "Usage: `basename $0` \"text message\""
+  echo "Usage: $(basename "$0") \"text message\""
   exit 0
 fi
 
@@ -27,4 +27,4 @@ if [ "$#" -ne 1 ]; then
     exit 0
 fi
 
-curl -s --data "text=$1" --data "chat_id=$GROUP_ID" 'https://api.telegram.org/bot'$BOT_TOKEN'/sendMessage' > /dev/null
+curl -s --data "text=$1" --data "chat_id=$GROUP_ID" 'https://api.telegram.org/bot'"$BOT_TOKEN"'/sendMessage' > /dev/null

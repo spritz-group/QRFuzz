@@ -32,11 +32,11 @@ In order to have everything under control in just one screen, we recommend to us
 
 1. Move inside `script/fuzzqr-single`
 2. Open a terminal and configure `tmux` (or open multiple terminals) as shown in the image above (3 terminals).
-3. In the left terminal, execute `./qrgen-terminal.sh left <app_name> <optional:start_position>`.
+3. In the left terminal, execute `./qrgen-terminal.sh -p left -a <app_name> -s <optional:start_position>`.
 4. Position the smartphone so that the QR Code is fully framed by the camera.
 5. In the top right terminal, execute `adb devices` and take note of `device ID`.
 6. In the top right terminal, execute `appium` and take note of port.
-7. In the bottom right terminal, execute `./appium-terminal.sh <appium_port> <device_id> <app_name> <optional:start_position>`
+7. In the bottom right terminal, execute `./appium-terminal.sh -p <appium_port> -d <device_id> -a <app_name> -s <optional:start_position>`
 
 If something fails (e.g. xpath / object ID changes in the app), you will receive a prompt from the bottom right terminal to put the app in the scan page and then press any key to continue.
 
@@ -48,13 +48,13 @@ If something fails (e.g. xpath / object ID changes in the app), you will receive
 
 1. Move inside `script/fuzzqr-single`
 2. Open a terminal and configure `tmux` (or open multiple terminals) as shown in the image above (4 terminals).
-3. In the top left terminal, execute `./qrgen-terminal.sh left <app_name> <optional:start_position>`.
-4. In the top right terminal, execute `./qrgen-terminal.sh right <app_name> <optional:start_position>`.
+3. In the top left terminal, execute `./qrgen-terminal.sh -p left -a <app_name> -s <optional:start_position>`.
+4. In the top right terminal, execute `./qrgen-terminal.sh -p right -a <app_name> -s <optional:start_position>`.
 5. Position the smartphones so that the QR Code is fully framed by the cameras (one on the left, one on the right).
 6. In the bottom left (or right) terminal, execute `adb devices` and take note of `device ID` of both smartphones.
 7. In another workspace, or in a background window, open two new terminals and execute `appium -p <port_number>`.
-8. In the bottom left terminal, execute `./appium-terminal.sh <appium_port_1> <device_id_1> <app_name> <optional:start_position>`
-9. In the bottom right terminal, execute `./appium-terminal.sh <appium_port_2> <device_id_2> <app_name> <optional:start_position>`
+8. In the bottom left terminal, execute `./appium-terminal.sh -p <appium_port_1> -d <device_id_1> -a <app_name> -s <optional:start_position>`
+9. In the bottom right terminal, execute `./appium-terminal.sh -p <appium_port_2> -d <device_id_2> -a <app_name> -s <optional:start_position>`
 
 If something fails (e.g. xpath / object ID changes in the app), you will receive a prompt from the bottom terminals to put the app in the scan page and then press any key to continue.
 
@@ -69,13 +69,13 @@ Here's an example with parallel execution (single execution is straight forward)
 
 1. Move inside `script/fuzzqr-sequential`, and create two files `apps-phone-1.txt` and `apps-phone-2.txt`, each containing list of apps to test in new lines.
 2. Open a terminal and configure `tmux` (or open multiple terminals) as shown in the image above (4 terminals).
-3. In the top left terminal, execute `./qrgen-terminal.sh left <app_lists_file_1> <optional:start_position>`.
-4. In the top right terminal, execute `./qrgen-terminal.sh right <app_lists_file_2> <optional:start_position>`.
+3. In the top left terminal, execute `./qrgen-terminal.sh -p left -f <app_lists_file_1> -s <optional:start_position>`.
+4. In the top right terminal, execute `./qrgen-terminal.sh -p right -f <app_lists_file_2> -s <optional:start_position>`.
 5. Position the smartphones so that the QR Code is fully framed by the cameras (one on the left, one on the right).
 6. In the bottom left (or right) terminal, execute `adb devices` and take note of `device ID` of both smartphones.
 7. In another workspace, or in a background window, open two new terminals and execute `appium -p <port_number>`.
-8. In the bottom left terminal, execute `./appium-terminal.sh <appium_port_1> <device_id_1> <app_lists_file_1> <optional:start_position>`
-9. In the bottom right terminal, execute `./appium-terminal.sh <appium_port_2> <device_id_2> <app_lists_file_2> <optional:start_position>`
+8. In the bottom left terminal, execute `./appium-terminal.sh -p <appium_port_1> -d <device_id_1> -f <app_lists_file_1> -s <optional:start_position>`
+9. In the bottom right terminal, execute `./appium-terminal.sh -p <appium_port_2> -d <device_id_2> -f <app_lists_file_2> -s <optional:start_position>`
 
 ## Manual
 

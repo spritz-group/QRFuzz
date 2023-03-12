@@ -11,11 +11,11 @@ This program generates and shows QR codes with malicious payloads.
 
 - Python (3.9+) and PIP
   - For the first time, run `pip install -r requirements.txt` to install all the mandatory dependencies
-  - Install tkinter using: `sudo apt-get install python3-tk`
+  - **Tip**: install extra packages for tkinter using: `sudo apt install python3-tk`
 
 ## Structure
 
-- `words/`: collection of dictionaries; each word is listed inside a single line.
+- `words/`: collection of dictionaries; each word is listed line by line.
 
 ## Extend the tool
 

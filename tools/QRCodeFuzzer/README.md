@@ -24,8 +24,9 @@ The QR Code Fuzzer includes an Appium Client that interacts with an Appium Serve
 ## Structure
 
 - `data-tests/`: collection of screenshots and logs during tests
-- `inspectors/`: inspector class to execute a set of predefined actions inside an app
-  - Here it is possible to add new inspectors to test a new application
+  - **Tip**: after running a test, a new directory is created with the name of the app tested
+- `inspectors/`: inspector class to execute a set of pre-defined actions inside an app
+  - **Tip:**: It is possible to add new inspectors in this folder to test new applications
 
 ## Extend the tool
 

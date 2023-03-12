@@ -135,12 +135,9 @@ dmypy.json
 # Dependencies
 **/node_modules
 
-# QRCodeGenerator
+# Log scripts
 **/log-qrgen**
-
-# Scripts
-script/fuzzqr-single/log*
-script/single-execution/log*.txt
+**/log-appium**
 
 # QRCodeFuzzer
 tools/QRCodeFuzzer/data-tests/**

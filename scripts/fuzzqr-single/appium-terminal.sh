@@ -28,35 +28,81 @@ function echolog {
 }
 
 
-echosuc "[ APPIUM Terminal Script ]"
+bo=$(tput bold)
+no=$(tput sgr0)
+
+echosuc "[ QRCodeFuzzer (Appium) Terminal ]"
 echo "[?] Checking script arguments"
 
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]
+# Usage text
+text_version="\t QRCodeFuzzer (Appium) Terminal \n"
+text_usage="${bo}USAGE${no}\n"
+text_usage+="\t ./appium-terminal.sh [ARGUMENTS]\n"
+text_usage+="${bo}APP${no} \n"
+text_usage+="$text_version \n"
+text_usage+="${bo}ARGUMENTS${no} \n"
+text_usage+="\t -p <port_number> \t (REQUIRED) Port number of the appium server \n"
+text_usage+="\t -d <device_id> \t (REQUIRED) The device id from <adb devices> \n"
+text_usage+="\t -a <app_name> \t\t (REQUIRED) Set the name of the app to test \n"
+text_usage+="\t -s <start_position> \t Set the position number to start from \n"
+text_usage+="\t --set-notification \t Bash command to send notification through a script (es. Telegram Notifier) \n"
+usage=$(printf "$text_usage \n")
+
+
+notification=""; port=""; app=""; start=""; device="";
+
+# Check Arguments
+while [[ $# -gt 0 ]]; do
+    case "${1}" in
+        '-a')
+            app="${2}"; shift 2 ;;
+        '-s')
+            start="${2}"; shift 2 ;;
+        '-p')
+            port="${2}"; shift 2 ;;
+        '-d')
+            device="${2}"; shift 2 ;;
+        '--set-notification')
+            notification="${2}"; shift 2 ;;
+        *)
+            echo "$usage"; echoerr "[Error] Invalid flag ${1}"; exit 1 ;;
+    esac
+done
+
+# Check App argument
+if [ -z "$app" ]
 then
-    echoerr "[ERROR] No arguments supplied, please provide: "
-    echoerr "<arg1> the port number of the appium server"
-    echoerr "<arg2> the device id from <adb devices>"
-    echoerr "<arg3> a name of the app to test"
-    echoerr "[OPTIONAL] <arg4> a position number to start from (default: 0)"
-    echoerr "[OPTIONAL] <arg5> telegram command to send notification (default: disabled)"
+    echo "$usage"
+    echoerr "[Error] App argument (-a) is required"
     exit 1
 fi
 
-filename="$3"
-IFS=$'\n' read -d '' -r -a app < "$filename"
-
-if [ -z "$4" ]
+# Check Port argument
+if [ -z "$port" ]
 then
-    start=0
-else
-    start="$4"
+    echo "$usage"
+    echoerr "[Error] Port argument (-p) is required"
+    exit 1
 fi
 
-if [ -z "$5" ]
+# Check Port argument
+if [ -z "$device" ]
 then
-    telegram=""
-else
-    telegram="$5"
+    echo "$usage"
+    echoerr "[Error] Device ID argument (-d) is required"
+    exit 1
+fi
+
+# Check start
+if [ -z "$start" ]
+then
+    start=0
+fi
+
+# Check Notification
+if [ -z "$notification" ]
+then
+    notification=""
 fi
 
 echosuc "[OK] ${#app[@]} apps loaded:"
@@ -67,15 +113,15 @@ echo "[?] Executing the appium client for single app"
 
 echolog "Appium Terminal Script started"
 echolog "-- CONFIGURATION"
-echolog "Port number for appium server: $1"
-echolog "Device ID: $2"
-echolog "App loaded: $3"
+echolog "Port number for appium server: $port"
+echolog "Device ID: $device"
+echolog "App loaded: $app"
 echolog "Start from: $start"
-echolog "Telegram command: $telegram"
+echolog "Notification bash command: $notification"
 echolog "-- EXECUTION"
 
 
-i="$3"
+i="$app"
 echolog "Current analysis: $i"
 echosuc "----------- NOW EXECUTING $i -------------"
 dir="$qrfuzzdir/data-tests/$i"
@@ -94,22 +140,22 @@ else
 fi
 echolog "Node script START for $i"
 
-if [ -n "$telegram" ]
+if [ -n "$notification" ]
 then
-    $telegram "Test START for $i"
+    $notification "Test START for $i"
 fi
 
 echo "[?] Starting node script..."
-node "$qrfuzzdir"/index.js "$i" "$dir" "$1" "$2" "$start"
+node "$qrfuzzdir"/index.js "$i" "$dir" "$port" "$device" "$start"
 echosuc "----------- END $i -------------"
 echo "[?] Sleeping for 5s"
 echolog "Node script FINISH for $i"
 sleep 5
 echolog "Appium Terminal Script exited"
 
-if [ -n "$telegram" ]
+if [ -n "$notification" ]
 then
-    $telegram "Test FINISH for $i"
+    $notification "Test FINISH for $i"
     log=$(cat log-appium-terminal-single-"$timestamp".txt)
-    $telegram "$log"
+    $notification "$log"
 fi

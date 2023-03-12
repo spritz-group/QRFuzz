@@ -40,8 +40,4 @@ You can find example on how to extend the tool inside the folder of each tool.
 
 ## Credits
 
-This project has been developed by students from the University of Padua (UniPD, Italy).
-
-- Federico Carboni
-- Denis Donadel
-- Mariano Sciacco
+This project has been developed by < Anonymous >.

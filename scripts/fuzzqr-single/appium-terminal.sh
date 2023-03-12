@@ -45,7 +45,7 @@ fi
 filename="$3"
 IFS=$'\n' read -d '' -r -a app < "$filename"
 
-if [ -z "$3" ]
+if [ -z "$4" ]
 then
     start=0
 else

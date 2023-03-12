@@ -1,9 +1,2 @@
-qrcode
-Pillow
-argparse
-base45
-flynn
-cose
-PyPDF2
-pyzbar
-pypng
+qrcode~=7.4.2
+Pillow~=9.4.0

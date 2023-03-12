@@ -14,17 +14,18 @@ update_time = 500
 # --------------------------------------------------
 
 def cmd():
-    """ Application arguments parser """
+    """ Argument parser """
     parser = argparse.ArgumentParser(
+        prog="QR Code Generator",
         description="QR Code Generator used in QRFuzz. Generate and Display QR Code.",
-        usage=f"main.py -a <app_name> -l [number]\n\nPayload lists: \n {fuzz_type}"
+        usage=f"main.py -a <app_name> -l <number>\nPayload lists: \n {fuzz_type}"
     )
     sgroup = parser.add_argument_group("Options available")
     sgroup.add_argument(
         "--list",
         "-l",
         type=int,
-        help="Set wordlist to use",
+        help="Set the dictionary to use. ",
         choices=[i[0] for i in fuzz_type],
     ) 
     sgroup.add_argument(

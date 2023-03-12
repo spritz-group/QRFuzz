@@ -1,6 +1,6 @@
 # Telegram Notifier
 
-This is a tiny Telegram notifier made out of Bash scripts to get notification about running applications in the Smartphone. It is useful to get notified working with FuzzQR whenever an application suddenly crashes.
+This is a tiny Telegram notifier made out of Bash scripts to get notification about running applications in the Smartphone. It is useful to get notified working with QRFuzz whenever an application suddenly crashes.
 
 ## `telegram-send`
 

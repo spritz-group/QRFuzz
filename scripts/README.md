@@ -4,7 +4,7 @@
 
 > This version has been tested only with Debian 10 and 11.
 
-1. Move inside `script/fuzzqr-debian-installer`
+1. Move inside `scripts/debian-installer`
 2. Execute `./pyhton-installer.sh`
 3. Execute `./appium-installer.sh`
 4. (OPTIONAL) Execute `./bash-variables-installer.sh`; this will add ANDROID_HOME to bashrc and a global folder in `~/.npm-global`.

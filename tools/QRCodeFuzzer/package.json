@@ -1,0 +1,19 @@
+{
+  "name": "qr-code-fuzzer",
+  "version": "1.0.0",
+  "description": "QR Code Fuzzer to perform mobile app testing with QR Codes",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webdriverio": "^7.16.13"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.3"
+  }
+}

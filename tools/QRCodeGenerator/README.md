@@ -1,6 +1,6 @@
 # QR Code Generator
 
-This program generates and shows QR codes with malicious payloads. 
+This program generates and shows QR codes with malicious payloads.
 
 ## Usage
 
@@ -10,7 +10,7 @@ This program generates and shows QR codes with malicious payloads.
 ### Requirements
 
 - Python 3.9+ and `pip`
-    - For the first time run `pip install -r requirements.txt` to install all the mandatory dependencies
+  - For the first time run `pip install -r requirements.txt` to install all the mandatory dependencies
 - Install also tkinter using: `sudo apt-get install python3-tk`
 
 ## Structure

@@ -2,16 +2,18 @@
 
 ![QRFuzz banner](images/qrfuzz-banner.png)
 
-To replicate the testbench, you need a PC with a monitor and a smartphone.
+To replicate the test-bench, you need a PC with a monitor and a smartphone.
 In order to have everything under control in just one screen, we recommend to use `tmux`.
 
-## Script-assisted
+## Automated Execution
 
-### Single Execution
+In this approach, you can use scripts to simplify the interactions with the tools provided by the toolkit. These scripts are collected in the `scripts` folder under the name `scripts/test-*`.
+
+### Automated Single Execution
 
 ![tmux-single-example](images/terminal-tmux-single.png)
 
-1. Move inside `script/test-single`
+1. Move inside `scripts/test-single`
 2. Open a terminal and configure `tmux` (or open multiple terminals) as shown in the image above (3 terminals).
 3. In the left terminal, execute `./qrgen-terminal.sh -p left -a <app_name> -s <optional:start_position>`.
 4. Position the smartphone so that the QR Code is fully framed by the camera.
@@ -23,11 +25,11 @@ If something fails (e.g. xpath / object ID changes in the app), you will receive
 
 > Tests are saved inside `tools/QRCodeFuzzer/data-tests/<app_name>`
 
-### Parallel Execution
+### Automated Parallel Execution
 
 ![tmux-parallel-example](images/terminal-tmux-parallel.png)
 
-1. Move inside `script/test-single`
+1. Move inside `scripts/test-single`
 2. Open a terminal and configure `tmux` (or open multiple terminals) as shown in the image above (4 terminals).
 3. In the top left terminal, execute `./qrgen-terminal.sh -p left -a <app_name> -s <optional:start_position>`.
 4. In the top right terminal, execute `./qrgen-terminal.sh -p right -a <app_name> -s <optional:start_position>`.
@@ -41,7 +43,7 @@ If something fails (e.g. xpath / object ID changes in the app), you will receive
 
 > Tests are saved inside `tools/QRCodeFuzzer/data-tests/<app_name>`
 
-### Sequential Execution (experimental)
+### Automated Sequential Execution (experimental)
 
 Sequential execution can be useful to execute multiple applications tests.
 The setup is similar to single / parallel execution, with the only constraint that you can pass a `<app_lists_file>` instead of `<app_name>`.
@@ -58,23 +60,31 @@ Here's an example with parallel execution (single execution is straight forward)
 8. In the bottom left terminal, execute `./appium-terminal.sh -p <appium_port_1> -d <device_id_1> -f <app_lists_file_1> -s <optional:start_position>`
 9. In the bottom right terminal, execute `./appium-terminal.sh -p <appium_port_2> -d <device_id_2> -f <app_lists_file_2> -s <optional:start_position>`
 
-## Manual
+## Manual Execution
 
-### Single Execution
+In this approach, you can directly employ each tool manually.
 
-> Get with `adb devices` the `udid` of the devices to use as "device name".
+> **Tip:** Get the `udid` (`device_id`) using `adb devices`.
+
+### Manual Single Execution
 
 1. Start `appium -p 4723` in terminal (even in background)
 2. Start a bash script with `python main.py -a <app> -j <json_data_path> -p <left/right/center> -sf <optional:start_position>` in another terminal
-3. Start a bash script with `node index.js <app> <data_path> <port> <device_name> <optional:start_position>` in a third terminal
+3. Start a bash script with `node index.js <app> <data_path> <port> <device_id> <optional:start_position>` in a third terminal
 
-### Parallel Execution
-
-> Get with `adb devices` the `udid` of the devices to use as "device name".
+### Manual Parallel Execution
 
 1. Start `appium -p 4723` in terminal A (even in background)
 2. Start `appium -p 4724` in terminal B (even in background)
 3. Start a bash script with `python main.py -a <app> -j <json_path>` for terminal 1
 4. Start a bash script with `python main.py -a <app> -j <json_path>` for terminal 2
-5. Start a bash script with `node index.js <app> <data_path> <port> <device_name>` for terminal 3 (same path as terminal 1)
-6. Start a bash script with `node index.js <app> <data_path> <port> <device_name>` for terminal 4 (same path as terminal 2)
+5. Start a bash script with `node index.js <app> <data_path> <port> <device_id>` for terminal 3 (same path as terminal 1)
+6. Start a bash script with `node index.js <app> <data_path> <port> <device_id>` for terminal 4 (same path as terminal 2)
+
+## Extra
+
+### Telegram Notifier
+
+The Telegram notifier can be used to get notified about app status changes.
+
+You can find installation and usage instructions in [scripts/telegram-notifier](../scripts/telegram-notifier/README.md) folder.

@@ -10,8 +10,3 @@ You can find installation instructions in [installation.md](installation.md).
 
 You can find usage instructions in [usage.md](installation.md).
 
-## Extra
-
-### Telegram Notifier
-
-You can find installation and usage instructions in [../scripts/telegram-notifier/README.md](telegram-notifier/README.md).

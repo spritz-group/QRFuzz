@@ -2,21 +2,32 @@
 
 ![QRFuzz banner](images/qrfuzz-banner.png)
 
-## Linux (Debian)
+## Debian GNU/Linux installation
 
-> This version has been tested only with Debian 10 and 11.
+> This version has been tested only with Debian 10 and 11, as well as RaspbianOS.
 
 1. Move inside `scripts/debian-installer/`
 2. Execute `./pyhton-installer.sh`
 3. Execute `./appium-installer.sh`
 4. (OPTIONAL) Execute `./bash-variables-installer.sh`; this will add ANDROID_HOME to bashrc and a global folder in `~/.npm-global`.
 
-## Windows
+## Generic installation for Windows, MacOS, Linux
 
-Windows is supported by Appium and TK (for QR Gen), but we do not provide documentation for the installation at the moment.
-You should proceed with the classic installation of QRCodeFuzzer and QRCodeGenerator via npm and python/pip respectively.
+Check if these programs are already installed in your OS (and install them, if not):
 
-## MacOS / Linux (General)
+- Python (3.9+) with PIP
+- NodeJS (18.x+) with NPM
 
-We do not provide documentation at the moment, but you should be free to find corresponding packages by looking at the shell scripts installation commands.
-You should proceed with the classic installation of QRCodeFuzzer and QRCodeGenerator via npm and python/pip respectively.
+### QRCodeFuzzer Installation
+
+1. Open the terminal inside `tools/QRCodeFuzzer`
+2. `npm install`
+
+### QRCodeGenerator Installation
+
+1. Open the terminal inside `tools/QRCodeGenerator`
+2. `pip install -r requirements.txt`
+
+### Appium server
+
+1. Follow the [instructions](https://appium.io/docs/en/about-appium/getting-started/?lang=en) from the official website

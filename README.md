@@ -1,38 +1,46 @@
 # QRFuzz
 
-> This is a PRIVATE repository. Before making any of this content public, please contact the authors.
-
-A fuzzing toolkit to test malicious QR Codes in Mobile Applications
+A fuzzing toolkit to test malicious QR Codes in mobile applications.
 
 ![QRFuzz banner](docs/images/qrfuzz-banner.png)
 
-### Current release
+**Current release**: v1.0.0 (2023-03-12)
 
-> **Latest release**: v1.0.0 (2023-03-12)
-
-You can find changelogs in the releases page of the Github project.
+You can find toolkit updates in the [CHANGELOGS](CHANGELOGS.md) page.
 
 ## Installation
 
-In order to install this toolkit you must follow the instructions inside `script/readme.md` file.
+All the instructions to install the toolkit are inside the [docs / installation](docs/installation.md) page.
 
 ## Usage
 
-### Script-assisted
+All the instructions to use the toolkit are inside the [docs / usage](docs/usage.md) page.
 
-Read the instructions in `script/readme.md`.
+## Quick Start
 
-### Manual
+1. Connect an Android Smartphone to a PC and type `adb devices`
+    - Save the `udid` (`device_id`) of the device
+2. Open a new terminal and start Appium
+    - `appium -p 4723`
+3. Open a new terminal and start QRCodeGenerator
+    - `cd tools/QRCodeGenerator`
+    - `python main.py -a <app> -j <json_data_path> -p <position>`
+4. Open a new terminal and start QRCodeFuzzer
+    - `cd tools/QRCodeFuzzer`
+    - `node index.js <app> <data_path> <port> <device_id>`
+5. Once the tests are completed, check the results inside the test directory
+    - `ls tools/QRCodeFuzzer/data-tests/<app_name>`
 
-> Using a terminal, type `adb devices` to get `udid` of the devices. Replace `device_name` with the desired `udid`.
+## Extend the tool
 
-1. Start `appium -p 4723` in a terminal (in background)
-2. In a different terminal, Start a bash script with `python main.py -a <app> -j <json_data_path> -p <left/right/center> -sf <optional:start_position>` in another terminal
-3. Start a bash script with `node index.js <app> <data_path> <port> <device_name> <optional:start_position>` in a different terminal
+You can find example on how to extend the tool inside the folder of each tool.
+
+- [QRCodeFuzzer](tools/QRCodeFuzzer/README.md)
+- [QRCodeGenerator](tools/QRCodeGenerator/README.md)
 
 ## Credits
 
-This project has been made by students from the University of Padua.
+This project has been developed by students from the University of Padua (UniPD, Italy).
 
 - Federico Carboni
 - Denis Donadel

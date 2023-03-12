@@ -3,7 +3,8 @@
 ![QRFuzz banner](images/qrfuzz-banner.png)
 
 To replicate the test-bench, you need a PC with a monitor and a smartphone.
-In order to have everything under control in just one screen, we recommend to use `tmux`.
+
+> **Tip:** In order to have everything under control in just one screen, we recommend to use `tmux`.
 
 ## Automated Execution
 
@@ -23,6 +24,8 @@ In this approach, you can use scripts to simplify the interactions with the tool
 
 If something fails (e.g. xpath / object ID changes in the app), you will receive a prompt from the bottom right terminal to put the app in the scan page and then press any key to continue.
 
+If the app crashes, the QRCodeFuzzer will try to recover the previous test by re-opening the app.
+
 > Tests are saved inside `tools/QRCodeFuzzer/data-tests/<app_name>`
 
 ### Automated Parallel Execution
@@ -40,6 +43,8 @@ If something fails (e.g. xpath / object ID changes in the app), you will receive
 9. In the bottom right terminal, execute `./appium-terminal.sh -p <appium_port_2> -d <device_id_2> -a <app_name> -s <optional:start_position>`
 
 If something fails (e.g. xpath / object ID changes in the app), you will receive a prompt from the bottom terminals to put the app in the scan page and then press any key to continue.
+
+If the app crashes, the QRCodeFuzzer will try to recover the previous test by re-opening the app.
 
 > Tests are saved inside `tools/QRCodeFuzzer/data-tests/<app_name>`
 

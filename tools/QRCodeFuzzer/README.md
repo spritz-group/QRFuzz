@@ -11,18 +11,23 @@ The QR Code Fuzzer includes an Appium Client that interacts with an Appium Serve
 
 - Smartphone with Android
 - Windows, Linux and Mac OS are supported
-- NodeJS with `npm` (version 6.x+)
+- NodeJS (18.x+) with NPM
 - Android SDK installed
-    - `ANDROID_HOME` and `JAVA_HOME` environment paths are required
-- Appium Server app
-- (optional) Appium Inspector 
-    - Use this to generate macro sequence of actions to use in the webdriver.io interactions
+  - `ANDROID_HOME` and `JAVA_HOME` environment paths are required
+- Appium Server
+
+#### Optional
+
+- [Appium Inspector](https://github.com/appium/appium-inspector)
+  - Use this app to generate macro sequence of actions to use in the webdriver.io interactions
 
 ## Structure
 
 - `data-tests/`: collection of screenshots and logs during tests
 - `inspectors/`: inspector class to execute a set of predefined actions inside an app
-    - Here it is possible to add new inspectors to test a new application
+  - Here it is possible to add new inspectors to test a new application
+
+## Extend the tool
 
 ### Inspector example
 

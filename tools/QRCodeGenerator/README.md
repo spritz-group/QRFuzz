@@ -9,17 +9,19 @@ This program generates and shows QR codes with malicious payloads.
 
 ### Requirements
 
-- Python 3.9+ and `pip`
-  - For the first time run `pip install -r requirements.txt` to install all the mandatory dependencies
-- Install also tkinter using: `sudo apt-get install python3-tk`
+- Python (3.9+) and PIP
+  - For the first time, run `pip install -r requirements.txt` to install all the mandatory dependencies
+  - Install tkinter using: `sudo apt-get install python3-tk`
 
 ## Structure
 
 - `words/`: collection of dictionaries; each word is listed inside a single line.
 
+## Extend the tool
+
 ### QR Builder example
 
-This is an example on how to add new applications.
+This is an example on how to add new applications support.
 
 ```python
 # [Edit file] qr_builder.py

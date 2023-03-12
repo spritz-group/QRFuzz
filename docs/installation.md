@@ -4,14 +4,17 @@
 
 ## Debian GNU/Linux installation
 
-> This version has been tested only with Debian 10 and 11, as well as RaspbianOS.
+> This version has been tested with Debian 10 and 11, as well as RaspbianOS.
 
-1. Move inside `scripts/debian-installer/`
+1. `cd scripts/debian-installer/`
 2. Execute `./pyhton-installer.sh`
 3. Execute `./appium-installer.sh`
-4. (OPTIONAL) Execute `./bash-variables-installer.sh`; this will add ANDROID_HOME to bashrc and a global folder in `~/.npm-global`.
+4. (OPTIONAL) Execute `./bash-variables-installer.sh`
+    - **Note:** This will add ANDROID_HOME to bashrc and a global folder in `~/.npm-global`
 
 ## Generic installation for Windows, MacOS, Linux
+
+### Requirements
 
 Check if these programs are already installed in your OS (and install them, if not):
 
@@ -30,4 +33,5 @@ Check if these programs are already installed in your OS (and install them, if n
 
 ### Appium server
 
-1. Follow the [instructions](https://appium.io/docs/en/about-appium/getting-started/?lang=en) from the official website
+1. Follow the [instructions](https://appium.io/docs/en/about-appium/getting-started/?lang=en) from the official website.
+

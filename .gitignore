@@ -132,9 +132,16 @@ dmypy.json
 # Extra
 *.zip
 
-**/QRCodeFuzzer/data*/logs/*.txt
+# Dependencies
 **/node_modules
-**/data-tests/**
+
+# QRCodeGenerator
 **/log-qrgen**
+
+# Scripts
 script/fuzzqr-single/log*
 script/single-execution/log*.txt
+
+# QRCodeFuzzer
+# tools/QRCodeFuzzer/data-tests/**
+# !tools/QRCodeFuzzer/data-tests/app-example/

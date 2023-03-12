@@ -28,49 +28,87 @@ function echolog {
 }
 
 
-echosuc "[ APPIUM Terminal Script ]"
+
+bo=$(tput bold)
+no=$(tput sgr0)
+
+echosuc "[ QRCodeFuzzer (Appium) Terminal ]"
 echo "[?] Checking script arguments"
 
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]
+# Usage text
+text_version="\t QRCodeFuzzer (Appium) Terminal \n"
+text_usage="${bo}USAGE${no}\n"
+text_usage+="\t ./appium-terminal.sh [ARGUMENTS]\n"
+text_usage+="${bo}APP${no} \n"
+text_usage+="$text_version \n"
+text_usage+="${bo}ARGUMENTS${no} \n"
+text_usage+="\t -p <port_number> \t (REQUIRED) Port number of the appium server \n"
+text_usage+="\t -d <device_id> \t (REQUIRED) The device id from <adb devices> \n"
+text_usage+="\t -f <path_txt_file> \t\t (REQUIRED) Set the path to the list of apps (for each line, one app) \n"
+text_usage+="\t -s <start_position> \t Set the position number to start from \n"
+usage=$(printf "$text_usage \n")
+
+port=""; apps=""; start=""; device="";
+
+# Check Arguments
+while [[ $# -gt 0 ]]; do
+    case "${1}" in
+        '-f')
+            apps="${2}"; shift 2 ;;
+        '-s')
+            start="${2}"; shift 2 ;;
+        '-p')
+            port="${2}"; shift 2 ;;
+        '-d')
+            device="${2}"; shift 2 ;;
+        *)
+            echo "$usage"; echoerr "[Error] Invalid flag ${1}"; exit 1 ;;
+    esac
+done
+
+# Check App argument
+if [ -z "$apps" ]
 then
-    echoerr "[ERROR] No arguments supplied, please provide: "
-    echoerr "<arg1> the port number of the appium server"
-    echoerr "<arg2> the device id from <adb devices>"
-    echoerr "<arg3> a txt file path with list of apps in each line"
-    echoerr "[OPTIONAL] <arg4> a position number to start from (default: 0)"
+    echo "$usage"
+    echoerr "[Error] File path to apps argument (-f) is required"
     exit 1
 fi
 
-filename="$3"
-IFS=$'\n' read -d '' -r -a app < "$filename"
+# Check Port argument
+if [ -z "$port" ]
+then
+    echo "$usage"
+    echoerr "[Error] Port argument (-p) is required"
+    exit 1
+fi
 
-if [ -z "$3" ]
+# Check Port argument
+if [ -z "$device" ]
+then
+    echo "$usage"
+    echoerr "[Error] Device ID argument (-d) is required"
+    exit 1
+fi
+
+# Check start
+if [ -z "$start" ]
 then
     start=0
-else
-    start="$4"
 fi
+
+filename="$apps"
+IFS=$'\n' read -d '' -r -a app < "$filename"
 
 echosuc "[OK] ${#app[@]} apps loaded:"
 echosuc "${app[*]}"
-
-
-# echo "[?] Check if at least one appium server is running"
-# if pgrep -x "node /usr/local/bin/appium" > /dev/null
-# then
-#     echosuc "[OK] Appium server is running"
-# else
-#     echoerr "[ERROR] Appium server is not running in the background. Please start it before continuing."
-#     exit 1
-# fi
 
 echo "[?] Executing the appium clients sequentially"
 echo "[?] Be aware that after each run the script will sleep for 30 seconds to wait the qrgen sync"
 
 echolog "Appium Terminal Script started"
 echolog "-- CONFIGURATION"
-echolog "Port number for appium server: $1"
-echolog "Device ID: $2"
+echolog "Port number for appium server: $port"
+echolog "Device ID: $device"
 echolog "Number of apps loaded: ${#app[@]}"
 echolog "List of apps loaded: ${app[*]}"
 echolog "-- EXECUTION"
@@ -95,7 +133,7 @@ do
     fi
     echolog "Node script START for $i"
     echo "[?] Starting node script..."
-    node "$qrfuzzdir"/index.js "$i" "$dir" "$1" "$2" "$start"
+    node "$qrfuzzdir"/index.js "$i" "$dir" "$port" "$device" "$start"
     echosuc "----------- END $i -------------"
     echo "[?] Sleeping for 30s"
     echolog "Node script FINISH for $i"

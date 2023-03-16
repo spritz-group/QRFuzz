@@ -1,3 +1,4 @@
+from app_specific.verificac19 import get_qr
 
 class qrbuilder:
     """ QR Builder Class 
@@ -86,7 +87,7 @@ class qrbuilder:
         return "https://support.google.com/messages/?p=web_computer#?c=" + payload
         
     def verificac19(payload: str):
-        return payload
+        return get_qr(payload)
 
     def line(payload: str):
         return  payload # "https://line.me/R/ti/g/"+payload

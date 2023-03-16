@@ -1,2 +1,5 @@
 qrcode~=7.4.2
 Pillow~=9.4.0
+base45~=0.4.4
+flynn~=1.0.0b2
+cose~=0.9.dev8

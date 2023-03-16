@@ -4,7 +4,7 @@ A fuzzing toolkit to test malicious QR Codes in mobile applications.
 
 ![QRFuzz banner](docs/images/qrfuzz-banner.png)
 
-**Current release**: v1.0.0 (2023-03-12)
+**Current release**: v1.0.1 (2023-03-16)
 
 You can find toolkit updates in the [CHANGELOGS](CHANGELOGS.md) page.
 

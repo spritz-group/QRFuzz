@@ -1,11 +1,5 @@
-#
-# Green Pass generator
-# --------------------
-
-
 from zlib import compress
 from binascii import unhexlify
-
 from base45 import b45encode
 from flynn import encoder as flynn_encoder
 from flynn import decoder as flynn_decoder
@@ -17,18 +11,13 @@ from cose.keys import OKPKey
 from base64 import b64decode
 from datetime import *
 
+# --------------------
+# Green Pass Builder for VerificaC19
+# Script edited from ps1dr3x (github.com/ps1dr3x/greenpass-generator)
+# --------------------
+
 PRIVKEY = b"9d370d925476752486ab0e4a8e088228e493da12d1586fafae9f35880dbcfe03"
 HEADER = b""
-
-# --- Legend GP types ---
-# t = tested
-# v = vax
-# r = recovery
-# -----------------------
-
-
-
-# TODO: test with current today date
 
 yesterday = datetime.timestamp(datetime.now()) - 86400
 tomorrow = datetime.timestamp(datetime.now()) + (7 * 86400)
@@ -36,12 +25,11 @@ tomorrow = datetime.timestamp(datetime.now()) + (7 * 86400)
 def get_pass(payload: str):
     return {payload}
 
-
 def get_cose(data):
     return Sign1Message(
-        phdr={Algorithm: EdDSA, KID: b64decode("NJpCsMLQco4=")}, payload=flynn_encoder.dumps(data)
+        phdr={Algorithm: EdDSA, KID: b64decode("NJpCsMLQco4=")}, 
+        payload=flynn_encoder.dumps(data)
     )
-
 
 def add_cose_key(msg, privkey):
     privkey = unhexlify(privkey)
@@ -49,13 +37,11 @@ def add_cose_key(msg, privkey):
     msg.key = key
     return msg
 
-
 def flynn(signed_encoded, header=b""):
     (_, (header_1, header_2, cbor_payload, sign)) = flynn_decoder.loads(signed_encoded)
     if header:
         header_1 = header
     return flynn_encoder.dumps((header_1, header_2, cbor_payload, sign))
-
 
 def b45(msg):
     return b45encode(compress(msg))

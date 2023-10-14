@@ -45,3 +45,16 @@ This project has been developed by students from the University of Padua (UniPD,
 - Federico Carboni
 - Denis Donadel
 - Mariano Sciacco
+
+If you're using our tool, please cite our paper: 
+```
+@inproceedings{carboni2023if,
+  title={If You’re Scanning This, It’s Too Late! A QR Code-Based Fuzzing Methodology to Identify Input Vulnerabilities in Mobile Apps},
+  author={Carboni, Federico and Conti, Mauro and Donadel, Denis and Sciacco, Mariano},
+  booktitle={International Conference on Applied Cryptography and Network Security},
+  pages={553--570},
+  year={2023},
+  organization={Springer}
+}
+```
+
